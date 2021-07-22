@@ -11,8 +11,9 @@ from torchvision import transforms # added
 import os # added
 import random # added
 
+
 def mask_loader():
-    print('!Starts of masks function')
+
     # load list of masks
     mask_list = os.listdir('./datasets/masks_tvb_256')
     rdm_idx = random.randrange(len(mask_list))
@@ -22,10 +23,10 @@ def mask_loader():
         mask = trans(mask)
         mask = np.reshape(mask, (1, 3, 256, 256))
 
-    print('TYPE: ', type(mask))
-    print('SIZE: ', mask.size())
-    print('MASKS: ', mask)
-    print('!End of masks function')
+    # print('TYPE: ', type(mask))
+    # print('SIZE: ', mask.size())
+    # print('MASKS: ', mask)
+
     return mask
 
 
