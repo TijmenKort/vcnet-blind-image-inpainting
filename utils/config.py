@@ -9,8 +9,8 @@ _C.SYSTEM.NUM_GPU = 1
 _C.SYSTEM.NUM_WORKERS = 4
 
 _C.WANDB = CN()
-_C.WANDB.PROJECT_NAME = "vcnet-blind-image-inpainting"
-_C.WANDB.ENTITY = "vvgl-ozu"
+_C.WANDB.PROJECT_NAME = "thesis_pytorch"
+_C.WANDB.ENTITY = "tijmenk_"
 _C.WANDB.RUN = 16
 _C.WANDB.LOG_DIR = ""
 _C.WANDB.NUM_ROW = 0
@@ -32,7 +32,7 @@ _C.MODEL = CN()
 _C.MODEL.NAME = "VCNet"
 _C.MODEL.IS_TRAIN = False
 
-_C.MODEL.RAINDROP_TUNE = True
+_C.MODEL.RAINDROP_TUNE = False
 _C.MODEL.RAINDROP_WEIGHTS = ""
 _C.MODEL.RAINDROP_VISUALIZE_INTERVAL = 20
 _C.MODEL.RAINDROP_LOG_INTERVAL = 20
@@ -84,7 +84,7 @@ _C.OPTIM.TEXTURE = 1e-3
 _C.OPTIM.ADVERSARIAL = 1e-3
 
 _C.DATASET = CN()
-_C.DATASET.NAME = "Raindrop"  # "FFHQ"  # "Places" # "raindrop"
+_C.DATASET.NAME = "FFHQ"  # "Places" # "raindrop"
 _C.DATASET.ROOT = "./datasets/ffhq/images1024x1024"  # "./datasets/ffhq/images1024x1024"  # "./datasets/Places/imgs" # "./datasets/raindrop/train20/"
 _C.DATASET.CONT_ROOT = "./datasets/CelebAMask-HQ"  # "./datasets/CelebAMask-HQ"  # "./datasets/ImageNet/"
 _C.DATASET.IMAGENET = "./datasets/ImageNet/"

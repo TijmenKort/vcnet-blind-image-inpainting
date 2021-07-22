@@ -1,7 +1,7 @@
 import glog as log
 import argparse
 from engine.trainer import Trainer, RaindropTrainer
-from engine.tester import Tester
+# from engine.tester import Tester
 from utils.config import get_cfg_defaults
 
 parser = argparse.ArgumentParser()

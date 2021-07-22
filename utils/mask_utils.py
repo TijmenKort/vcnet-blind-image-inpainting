@@ -7,6 +7,50 @@ import scipy.stats as st
 from torch import nn
 from torch.nn import functional as F
 from PIL import Image, ImageDraw
+from torchvision import transforms # added
+import os # added
+import random # added
+
+def mask_loader():
+    print('!Starts of masks function')
+    # load list of masks
+    mask_list = os.listdir('./datasets/masks_tvb_256')
+    rdm_idx = random.randrange(len(mask_list))
+
+    with Image.open("{}/{}".format('./datasets/masks_tvb_256', mask_list[rdm_idx])) as mask:
+        trans = transforms.ToTensor()
+        mask = trans(mask)
+        mask = np.reshape(mask, (1, 3, 256, 256))
+
+    print('TYPE: ', type(mask))
+    print('SIZE: ', mask.size())
+    print('MASKS: ', mask)
+    print('!End of masks function')
+    return mask
+
+
+def mask_binary(mask):
+    """
+    Set three channel masks to binary.
+    """
+    
+    transform_to_pil = transforms.ToPILImage()
+    transform_to_tensor = transforms.ToTensor()
+    transform_to_grey = transforms.Grayscale(num_output_channels=1)
+
+    # transform to pil imag
+    mask = transform_to_pil(mask)
+
+    # load greyscale transformer and transform mask to greyscale
+    mask = transform_to_grey(mask)
+
+    # transform back to tensor
+    mask = transform_to_tensor(mask)
+
+    # replace every non-black pixel with white
+    mask = torch.where(mask>0, torch.full((256,256,), 1), mask)
+
+    return mask
 
 
 class MaskGenerator:

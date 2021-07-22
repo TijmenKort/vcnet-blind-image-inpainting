@@ -1,0 +1,132 @@
+2021-07-22 15:52:17,361 INFO    MainThread:28566 [internal.py:wandb_internal():88] W&B internal server running at pid: 28566, started at: 2021-07-22 15:52:17.360350
+2021-07-22 15:52:17,365 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: check_version
+2021-07-22 15:52:17,365 INFO    WriterThread:28566 [datastore.py:open_for_write():80] open: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/run-2n2bwzhq.wandb
+2021-07-22 15:52:17,370 DEBUG   SenderThread:28566 [sender.py:send():179] send: header
+2021-07-22 15:52:17,371 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: check_version
+2021-07-22 15:52:17,420 DEBUG   SenderThread:28566 [sender.py:send():179] send: run
+2021-07-22 15:52:17,436 INFO    SenderThread:28566 [sender.py:_maybe_setup_resume():413] checking resume status for tijmenk_/thesis_pytorch/2n2bwzhq
+2021-07-22 15:52:17,636 INFO    SenderThread:28566 [sender.py:_maybe_setup_resume():472] configured resuming with: {'step': 5, 'history': 5, 'events': 18, 'output': 246, 'runtime': 495, 'summary': {'gp_fake': 52.72544860839844, '_runtime': 143, 'sem_const_loss': 0.604827880859375, 'fake_patch_validity': 242.6584320068359, 'fake_global_validity': 330.81219482421875, 'real_global_validity': -1938.150390625, 'gp': 122.1270751953125, 'recon_loss': 0.3787080645561218, 'fake_validity': 573.4706420898438, 'adv_global_loss': -324.2325439453125, 'real_patch_validity': -1490.102294921875, 'm_loss': 0.21523281931877136, 'adv_loss': -578.403564453125, 'gp_global': 69.40162658691406, '_timestamp': 1626959481, 'tex_const_loss': 62.391075134277344, '_step': 3, 'adv_patch_loss': -254.17105102539065, 'real_validity': -3428.252685546875}, 'config': {'MASK': {'desc': None, 'value': {'SIGMA': 4, 'MAX_WIDTH': 16, 'MIN_WIDTH': 8, 'MEAN_ANGLE': 1.2566370614359172, 'ANGLE_RANGE': 0.20943951023931953, 'GAUS_K_SIZE': 15, 'MAX_NUM_VERTEX': 24, 'MIN_NUM_VERTEX': 8, 'MAX_REMOVAL_RATIO': 0.5, 'MIN_REMOVAL_RATIO': 0.2, 'NUM_ITER_SMOOTHING': 3}}, 'TEST': {'desc': None, 'value': {'FONT': '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 'ITER': 4, 'MODE': 7, 'TEXT': 'hello world', 'IMG_ID': 52, 'WEIGHTS': None, 'ABLATION': False, 'C_IMG_ID': 38, 'FONT_SIZE': 24, 'BATCH_SIZE': 64, 'OUTPUT_DIR': './outputs', 'BRUSH_COLOR': 'RED', 'GRAFFITI_PATH': './datasets/graffiti-dataset/dataset/graffiti_sample/000001ff0013ffff.p'}}, 'MODEL': {'desc': None, 'value': {'D': {'LR': 0.001, 'NAME': '1-ChOutputDiscriminator', 'BETAS': [0.5, 0.9], 'SCHEDULER': [], 'DECAY_RATE': 0.5, 'NUM_CRITICS': 5, 'NUM_CHANNELS': 64}, 'MPN': {'LR': 0.001, 'NAME': 'MaskPredictionNetwork', 'BETAS': [0.5, 0.9], 'SCHEDULER': [], 'DECAY_RATE': 0, 'LOSS_COEFF': 2, 'NUM_CHANNELS': 64, 'NECK_CHANNELS': 128}, 'RIN': {'LR': 0.0001, 'NAME': 'RobustInpaintingNetwork', 'BETAS': [0.5, 0.9], 'EMBRACE': True, 'SCHEDULER': [], 'DECAY_RATE': 0, 'LOSS_COEFF': 1, 'NUM_CHANNELS': 32, 'NECK_CHANNELS': 128}, 'NAME': 'VCNet', 'JOINT': {'LR': 0.0002, 'NAME': 'JointNetwork', 'BETAS': [0.5, 0.9], 'SCHEDULER': [], 'DECAY_RATE': 0.5}, 'IS_TRAIN': True, 'RAINDROP_TUNE': False, 'RAINDROP_WEIGHTS': '', 'RAINDROP_LOG_INTERVAL': 20, 'RAINDROP_SAVE_INTERVAL': 200, 'RAINDROP_VISUALIZE_INTERVAL': 20}}, 'OPTIM': {'desc': None, 'value': {'GP': 10, 'MASK': 1, 'RECON': 1.4, 'TEXTURE': 0.001, 'SEMANTIC': 0.0001, 'ADVERSARIAL': 0.001}}, 'TRAIN': {'desc': None, 'value': {'TUNE': False, 'RESUME': True, 'SHUFFLE': True, 'SAVE_DIR': './weights', 'BATCH_SIZE': 4, 'START_STEP': 0, 'LOG_INTERVAL': 200, 'SAVE_INTERVAL': 10000, 'NUM_TOTAL_STEP': 302000, 'VISUALIZE_INTERVAL': 200, 'NUM_STEPS_FOR_JOINT': 20000}}, 'WANDB': {'desc': None, 'value': {'RUN': 16, 'ENTITY': 'tijmenk_', 'LOG_DIR': './logs/VCNet_FFHQ_302000step_4bs_0.0002lr_1gpu_16run', 'NUM_ROW': 0, 'PROJECT_NAME': 'thesis_pytorch'}}, 'SYSTEM': {'desc': None, 'value': {'NUM_GPU': 1, 'NUM_WORKERS': 4}}, '_wandb': {'desc': None, 'value': {'t': {'1': [1], '2': [1], '3': [5], '4': '3.8.8', '5': '0.11.0', '8': [5]}, 'framework': 'torch', 'cli_version': '0.11.0', 'is_jupyter_run': False, 'python_version': '3.8.8', 'is_kaggle_kernel': False}}, 'DATASET': {'desc': None, 'value': {'STD': [0.5, 0.5, 0.5], 'MEAN': [0.5, 0.5, 0.5], 'NAME': 'FFHQ', 'ROOT': './datasets/ffhq/images1024x1024', 'SIZE': 256, 'IMAGENET': './datasets/ImageNet/', 'CONT_ROOT': './datasets/CelebAMask-HQ', 'RAINDROP_ROOT': './datasets/raindrop/train20/train'}}}, 'resumed': True}
+2021-07-22 15:52:17,875 INFO    SenderThread:28566 [dir_watcher.py:__init__():168] watching files in: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files
+2021-07-22 15:52:17,876 INFO    SenderThread:28566 [sender.py:_start_run_threads():716] run started: 2n2bwzhq with start time 1626961441
+2021-07-22 15:52:17,879 DEBUG   SenderThread:28566 [sender.py:send():179] send: summary
+2021-07-22 15:52:17,882 INFO    SenderThread:28566 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-07-22 15:52:17,882 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: run_start
+2021-07-22 15:52:17,998 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: stop_status
+2021-07-22 15:52:17,999 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: stop_status
+2021-07-22 15:52:18,881 INFO    Thread-8  :28566 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/output.log
+2021-07-22 15:52:18,881 INFO    Thread-8  :28566 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/wandb-summary.json
+2021-07-22 15:52:33,187 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: stop_status
+2021-07-22 15:52:33,188 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: stop_status
+2021-07-22 15:52:46,864 DEBUG   SenderThread:28566 [sender.py:send():179] send: stats
+2021-07-22 15:52:48,331 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: stop_status
+2021-07-22 15:52:48,332 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: stop_status
+2021-07-22 15:53:03,495 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: stop_status
+2021-07-22 15:53:03,496 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: stop_status
+2021-07-22 15:53:04,914 INFO    Thread-8  :28566 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/output.log
+2021-07-22 15:53:12,921 INFO    Thread-8  :28566 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/output.log
+2021-07-22 15:53:13,922 INFO    Thread-8  :28566 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/output.log
+2021-07-22 15:53:13,923 DEBUG   SenderThread:28566 [sender.py:send():179] send: telemetry
+2021-07-22 15:53:13,924 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:13,925 DEBUG   SenderThread:28566 [sender.py:send():179] send: exit
+2021-07-22 15:53:13,926 INFO    SenderThread:28566 [sender.py:send_exit():287] handling exit code: 1
+2021-07-22 15:53:13,927 INFO    SenderThread:28566 [sender.py:send_exit():295] send defer
+2021-07-22 15:53:13,928 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:13,929 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:13,930 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 0
+2021-07-22 15:53:13,930 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:13,930 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 0
+2021-07-22 15:53:13,930 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 1
+2021-07-22 15:53:13,931 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:13,931 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 1
+2021-07-22 15:53:14,006 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:14,006 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 1
+2021-07-22 15:53:14,006 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 2
+2021-07-22 15:53:14,008 DEBUG   SenderThread:28566 [sender.py:send():179] send: stats
+2021-07-22 15:53:14,009 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:14,010 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 2
+2021-07-22 15:53:14,011 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:14,011 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 2
+2021-07-22 15:53:14,011 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 3
+2021-07-22 15:53:14,012 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:14,012 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 3
+2021-07-22 15:53:14,014 DEBUG   SenderThread:28566 [sender.py:send():179] send: summary
+2021-07-22 15:53:14,017 INFO    SenderThread:28566 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-07-22 15:53:14,018 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:14,018 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 3
+2021-07-22 15:53:14,018 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 4
+2021-07-22 15:53:14,019 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:14,019 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 4
+2021-07-22 15:53:14,019 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:14,020 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 4
+2021-07-22 15:53:14,033 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:14,199 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 5
+2021-07-22 15:53:14,199 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:14,200 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:14,201 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 5
+2021-07-22 15:53:14,201 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:14,201 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 5
+2021-07-22 15:53:14,201 INFO    SenderThread:28566 [dir_watcher.py:finish():282] shutting down directory watcher
+2021-07-22 15:53:14,303 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:14,923 INFO    Thread-8  :28566 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/wandb-summary.json
+2021-07-22 15:53:14,925 INFO    SenderThread:28566 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/config.yaml
+2021-07-22 15:53:14,925 INFO    SenderThread:28566 [dir_watcher.py:finish():312] scan: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files
+2021-07-22 15:53:14,926 INFO    SenderThread:28566 [dir_watcher.py:finish():318] scan save: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/config.yaml config.yaml
+2021-07-22 15:53:14,927 INFO    SenderThread:28566 [dir_watcher.py:finish():318] scan save: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/wandb-summary.json wandb-summary.json
+2021-07-22 15:53:14,937 INFO    SenderThread:28566 [dir_watcher.py:finish():318] scan save: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/output.log output.log
+2021-07-22 15:53:14,948 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 6
+2021-07-22 15:53:14,949 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:14,951 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:14,962 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 6
+2021-07-22 15:53:14,962 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:14,963 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 6
+2021-07-22 15:53:14,963 INFO    SenderThread:28566 [file_pusher.py:finish():177] shutting down file pusher
+2021-07-22 15:53:15,053 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,054 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,157 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,157 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,260 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,261 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,364 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,364 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,451 INFO    Thread-12 :28566 [upload_job.py:push():137] Uploaded file /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/wandb-summary.json
+2021-07-22 15:53:15,470 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,471 INFO    Thread-11 :28566 [upload_job.py:push():137] Uploaded file /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/config.yaml
+2021-07-22 15:53:15,471 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,574 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,575 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,640 INFO    Thread-13 :28566 [upload_job.py:push():137] Uploaded file /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/files/output.log
+2021-07-22 15:53:15,677 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,678 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,781 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:15,781 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:15,841 INFO    Thread-7  :28566 [sender.py:transition_state():308] send defer: 7
+2021-07-22 15:53:15,842 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:15,842 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 7
+2021-07-22 15:53:15,843 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:15,843 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 7
+2021-07-22 15:53:15,884 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:16,165 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 8
+2021-07-22 15:53:16,165 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:16,166 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:16,167 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 8
+2021-07-22 15:53:16,167 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:16,167 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 8
+2021-07-22 15:53:16,168 INFO    SenderThread:28566 [sender.py:transition_state():308] send defer: 9
+2021-07-22 15:53:16,169 DEBUG   SenderThread:28566 [sender.py:send():179] send: final
+2021-07-22 15:53:16,169 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: defer
+2021-07-22 15:53:16,170 DEBUG   SenderThread:28566 [sender.py:send():179] send: footer
+2021-07-22 15:53:16,170 INFO    HandlerThread:28566 [handler.py:handle_request_defer():141] handle defer: 9
+2021-07-22 15:53:16,171 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: defer
+2021-07-22 15:53:16,171 INFO    SenderThread:28566 [sender.py:send_request_defer():304] handle sender defer: 9
+2021-07-22 15:53:16,269 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: poll_exit
+2021-07-22 15:53:16,269 DEBUG   SenderThread:28566 [sender.py:send_request():193] send_request: poll_exit
+2021-07-22 15:53:16,269 INFO    SenderThread:28566 [file_pusher.py:join():182] waiting for file pusher
+2021-07-22 15:53:16,272 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: get_summary
+2021-07-22 15:53:16,275 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: sampled_history
+2021-07-22 15:53:16,277 DEBUG   HandlerThread:28566 [handler.py:handle_request():124] handle_request: shutdown
+2021-07-22 15:53:16,277 INFO    HandlerThread:28566 [handler.py:finish():658] shutting down handler
+2021-07-22 15:53:17,170 INFO    WriterThread:28566 [datastore.py:close():288] close: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210722_155215-2n2bwzhq/run-2n2bwzhq.wandb
+2021-07-22 15:53:17,270 INFO    SenderThread:28566 [sender.py:finish():947] shutting down sender
+2021-07-22 15:53:17,270 INFO    SenderThread:28566 [file_pusher.py:finish():177] shutting down file pusher
+2021-07-22 15:53:17,270 INFO    SenderThread:28566 [file_pusher.py:join():182] waiting for file pusher
+2021-07-22 15:53:17,275 INFO    MainThread:28566 [internal.py:handle_exit():78] Internal process exited

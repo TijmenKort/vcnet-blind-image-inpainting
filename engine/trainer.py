@@ -12,7 +12,7 @@ from modeling.architecture import MPN, RIN, Discriminator, PatchDiscriminator
 from losses.bce import WeightedBCELoss
 from losses.consistency import SemanticConsistencyLoss, IDMRFLoss
 from losses.adversarial import compute_gradient_penalty
-from utils.mask_utils import MaskGenerator, ConfidenceDrivenMaskLayer, COLORS
+from utils.mask_utils import MaskGenerator, ConfidenceDrivenMaskLayer, COLORS, mask_loader, mask_binary
 from utils.data_utils import linear_scaling, linear_unscaling, get_random_string, RaindropDataset
 
 # torch.autograd.set_detect_anomaly(True)
@@ -55,6 +55,9 @@ class Trainer:
         self.mask_generator = MaskGenerator(self.opt.MASK)
         self.mask_smoother = ConfidenceDrivenMaskLayer(self.opt.MASK.GAUS_K_SIZE, self.opt.MASK.SIGMA)
         # self.mask_smoother = GaussianSmoothing(1, 5, 1/40)
+        # ADDED MASK LOADER
+        self.mask_loader = mask_loader()
+
 
         self.to_pil = transforms.ToPILImage()
 
@@ -91,12 +94,30 @@ class Trainer:
             imgs = linear_scaling(imgs.float().cuda())
             batch_size, channels, h, w = imgs.size()
 
-            masks = torch.from_numpy(self.mask_generator.generate(h, w)).repeat([batch_size, 1, 1, 1]).float().cuda()
+            print('BATCH: ', batch_size, "\nCHANNELS: ", channels, "\nHxW: ", h, w)
+
+            masks_x = torch.from_numpy(self.mask_generator.generate(h, w)).repeat([batch_size, 1, 1, 1]).float().cuda()
+
+
+            # ADDED NEW CODE FOR MASKS
+            masks = self.mask_loader.repeat([batch_size, 1, 1, 1]).float().cuda()
+
+            # looking at a mask
+            print('TYPE: ', type(masks))
+            print('SIZE: ', masks.size())
+            print('MASKS: ', masks)
+
+            im = self.to_pil(masks[0].cpu())
+            im.save('mask.png')
+            # ------------------------
 
             cont_imgs, _ = next(iter(self.cont_image_loader))
             cont_imgs = linear_scaling(cont_imgs.float().cuda())
             if cont_imgs.size(0) != imgs.size(0):
                 cont_imgs = cont_imgs[:imgs.size(0)]
+
+            # ADDED MASKS BINARY
+            masks = mask_binary(masks).cuda()
 
             smooth_masks = self.mask_smoother(1 - masks) + masks
             smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
