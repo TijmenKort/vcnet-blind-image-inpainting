@@ -15,10 +15,10 @@ import random # added
 def mask_loader():
 
     # load list of masks
-    mask_list = os.listdir('./datasets/masks_tvb_256')
+    mask_list = os.listdir('./datasets/masks_tvb_256_large')
     rdm_idx = random.randrange(len(mask_list))
 
-    with Image.open("{}/{}".format('./datasets/masks_tvb_256', mask_list[rdm_idx])) as mask:
+    with Image.open("{}/{}".format('./datasets/masks_tvb_256_large', mask_list[rdm_idx])) as mask:
         trans = transforms.ToTensor()
         mask = trans(mask)
         mask = np.reshape(mask, (1, 3, 256, 256))
@@ -34,7 +34,7 @@ def mask_binary(mask):
     """
     Set three channel masks to binary.
     """
-    
+
     transform_to_pil = transforms.ToPILImage()
     transform_to_tensor = transforms.ToTensor()
     transform_to_grey = transforms.Grayscale(num_output_channels=1)
