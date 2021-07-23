@@ -2,7 +2,7 @@
 #Set job requirements
 #SBATCH -t 00:60:00
 #SBATCH -p gpu_short
-#SBATCH --gpus-per-node=gtx1080ti:1
+#SBATCH --gpus-per-node=gtx1080ti:4
 
 module load 2019
 
