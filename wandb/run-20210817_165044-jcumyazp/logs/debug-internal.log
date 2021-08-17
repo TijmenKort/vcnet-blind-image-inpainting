@@ -1,0 +1,136 @@
+2021-08-17 16:50:46,087 INFO    MainThread:26397 [internal.py:wandb_internal():88] W&B internal server running at pid: 26397, started at: 2021-08-17 16:50:46.085996
+2021-08-17 16:50:46,091 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: check_version
+2021-08-17 16:50:46,091 INFO    WriterThread:26397 [datastore.py:open_for_write():80] open: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/run-jcumyazp.wandb
+2021-08-17 16:50:46,096 DEBUG   SenderThread:26397 [sender.py:send():179] send: header
+2021-08-17 16:50:46,096 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: check_version
+2021-08-17 16:50:46,155 DEBUG   SenderThread:26397 [sender.py:send():179] send: run
+2021-08-17 16:50:46,369 INFO    SenderThread:26397 [dir_watcher.py:__init__():168] watching files in: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files
+2021-08-17 16:50:46,370 INFO    SenderThread:26397 [sender.py:_start_run_threads():716] run started: jcumyazp with start time 1629211844
+2021-08-17 16:50:46,370 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:50:46,372 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:50:46,373 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: run_start
+2021-08-17 16:50:46,396 DEBUG   HandlerThread:26397 [meta.py:__init__():39] meta init
+2021-08-17 16:50:46,396 DEBUG   HandlerThread:26397 [meta.py:__init__():53] meta init done
+2021-08-17 16:50:46,396 DEBUG   HandlerThread:26397 [meta.py:probe():210] probe
+2021-08-17 16:50:46,406 DEBUG   HandlerThread:26397 [meta.py:_setup_git():200] setup git
+2021-08-17 16:50:46,440 DEBUG   HandlerThread:26397 [meta.py:_setup_git():207] setup git done
+2021-08-17 16:50:46,441 DEBUG   HandlerThread:26397 [meta.py:_save_pip():57] save pip
+2021-08-17 16:50:46,443 DEBUG   HandlerThread:26397 [meta.py:_save_pip():71] save pip done
+2021-08-17 16:50:46,443 DEBUG   HandlerThread:26397 [meta.py:_save_conda():78] save conda
+2021-08-17 16:50:47,375 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/requirements.txt
+2021-08-17 16:50:47,376 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:50:47,377 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/conda-environment.yaml
+2021-08-17 16:50:52,382 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:00,390 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/conda-environment.yaml
+2021-08-17 16:51:00,456 DEBUG   HandlerThread:26397 [meta.py:_save_conda():86] save conda done
+2021-08-17 16:51:00,456 DEBUG   HandlerThread:26397 [meta.py:probe():252] probe done
+2021-08-17 16:51:00,557 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:51:00,558 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:51:00,698 DEBUG   SenderThread:26397 [sender.py:send():179] send: files
+2021-08-17 16:51:00,698 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-metadata.json with policy now
+2021-08-17 16:51:01,170 INFO    Thread-11 :26397 [upload_job.py:push():137] Uploaded file /scratch/tmp59rdv5ccwandb/vrnt17dz-wandb-metadata.json
+2021-08-17 16:51:01,392 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-metadata.json
+2021-08-17 16:51:15,354 DEBUG   SenderThread:26397 [sender.py:send():179] send: stats
+2021-08-17 16:51:15,734 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:51:15,735 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:51:30,878 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:51:30,879 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:51:40,427 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:46,032 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:51:46,033 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:51:46,263 DEBUG   SenderThread:26397 [sender.py:send():179] send: stats
+2021-08-17 16:51:48,400 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:51:48,401 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:51:48,404 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:51:48,436 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:51:48,437 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:50,439 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:50,593 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:51:50,594 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:51:50,596 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:51:51,440 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:51:52,442 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:52,724 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:51:52,725 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:51:52,728 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:51:53,443 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:51:54,446 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:54,897 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:51:54,898 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:51:54,901 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:51:55,447 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:51:56,449 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:57,090 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:51:57,091 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:51:57,094 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:51:57,449 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:51:58,451 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:51:59,229 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:51:59,230 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:51:59,233 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:51:59,452 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:00,454 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:01,180 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:52:01,182 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:52:01,411 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:01,411 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:01,415 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:01,456 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:02,457 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:03,654 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:03,655 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:03,658 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:04,460 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:04,461 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:05,873 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:05,873 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:05,876 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:06,462 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:06,463 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:08,107 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:08,108 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:08,111 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:08,464 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:10,235 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:10,235 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:10,238 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:10,466 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:10,467 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:12,423 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:12,424 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:12,426 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:12,469 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:12,470 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:14,472 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:14,625 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:14,626 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:14,629 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:15,473 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:16,330 DEBUG   HandlerThread:26397 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:52:16,330 DEBUG   SenderThread:26397 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:52:16,479 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:16,877 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:16,877 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:16,881 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:17,174 DEBUG   SenderThread:26397 [sender.py:send():179] send: stats
+2021-08-17 16:52:17,480 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:18,482 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:19,079 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:19,080 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:19,083 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:19,483 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:20,485 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:21,585 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:21,585 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:21,588 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:22,488 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:22,488 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log
+2021-08-17 16:52:23,723 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:23,724 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:23,727 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:24,490 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:25,863 DEBUG   SenderThread:26397 [sender.py:send():179] send: history
+2021-08-17 16:52:25,864 DEBUG   SenderThread:26397 [sender.py:send():179] send: summary
+2021-08-17 16:52:25,866 INFO    SenderThread:26397 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:52:26,493 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/wandb-summary.json
+2021-08-17 16:52:26,493 INFO    Thread-8  :26397 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_165044-jcumyazp/files/output.log

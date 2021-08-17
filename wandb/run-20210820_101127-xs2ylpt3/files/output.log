@@ -1,0 +1,23 @@
+
+I0820 10:12:23.574353 12431 trainer.py:252] Using 4 GPUs...
+W0820 10:12:32.380555 12431 warnings.py:109] /pytorch/aten/src/ATen/native/TensorFactories.cpp:361: UserWarning: Deprecation warning: In a future PyTorch release torch.full will no longer return tensors of floating dtype by default. Instead, a bool fill_value will return a tensor of torch.bool dtype, and an integral fill_value will return a tensor of torch.long dtype. Set the optional `dtype` or `out` arguments to suppress this warning.
+Traceback (most recent call last):
+  File "main.py", line 52, in <module>
+    trainer.run()
+  File "/home/jlpkort/vcnet-blind-image-inpainting/engine/trainer.py", line 130, in run
+    d_loss = self.train_D(masked_imgs, masks, y_imgs)
+  File "/home/jlpkort/vcnet-blind-image-inpainting/engine/trainer.py", line 158, in train_D
+    output = self.rin(x, pred_masks, neck)
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/nn/parallel/data_parallel.py", line 154, in forward
+    replicas = self.replicate(self.module, self.device_ids[:len(inputs)])
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/nn/parallel/data_parallel.py", line 159, in replicate
+    return replicate(module, device_ids, not torch.is_grad_enabled())
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/nn/parallel/replicate.py", line 120, in replicate
+    replica = module._replicate_for_data_parallel()
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1174, in _replicate_for_data_parallel
+    replica._parameters = replica._parameters.copy()
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/nn/modules/module.py", line 597, in __setattr__
+    def remove_from(*dicts):
+KeyboardInterrupt

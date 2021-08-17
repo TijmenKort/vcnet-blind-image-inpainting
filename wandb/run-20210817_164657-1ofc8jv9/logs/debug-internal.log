@@ -1,0 +1,116 @@
+2021-08-17 16:46:58,404 INFO    MainThread:7988 [internal.py:wandb_internal():88] W&B internal server running at pid: 7988, started at: 2021-08-17 16:46:58.403175
+2021-08-17 16:46:58,408 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: check_version
+2021-08-17 16:46:58,408 INFO    WriterThread:7988 [datastore.py:open_for_write():80] open: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/run-1ofc8jv9.wandb
+2021-08-17 16:46:58,413 DEBUG   SenderThread:7988 [sender.py:send():179] send: header
+2021-08-17 16:46:58,413 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: check_version
+2021-08-17 16:46:58,476 DEBUG   SenderThread:7988 [sender.py:send():179] send: run
+2021-08-17 16:46:58,693 INFO    SenderThread:7988 [dir_watcher.py:__init__():168] watching files in: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files
+2021-08-17 16:46:58,694 INFO    SenderThread:7988 [sender.py:_start_run_threads():716] run started: 1ofc8jv9 with start time 1629211617
+2021-08-17 16:46:58,694 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:46:58,696 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:46:58,698 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: run_start
+2021-08-17 16:46:58,707 DEBUG   HandlerThread:7988 [meta.py:__init__():39] meta init
+2021-08-17 16:46:58,707 DEBUG   HandlerThread:7988 [meta.py:__init__():53] meta init done
+2021-08-17 16:46:58,707 DEBUG   HandlerThread:7988 [meta.py:probe():210] probe
+2021-08-17 16:46:58,715 DEBUG   HandlerThread:7988 [meta.py:_setup_git():200] setup git
+2021-08-17 16:46:58,746 DEBUG   HandlerThread:7988 [meta.py:_setup_git():207] setup git done
+2021-08-17 16:46:58,747 DEBUG   HandlerThread:7988 [meta.py:_save_pip():57] save pip
+2021-08-17 16:46:58,749 DEBUG   HandlerThread:7988 [meta.py:_save_pip():71] save pip done
+2021-08-17 16:46:58,749 DEBUG   HandlerThread:7988 [meta.py:_save_conda():78] save conda
+2021-08-17 16:46:59,699 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/conda-environment.yaml
+2021-08-17 16:46:59,700 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:46:59,700 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/requirements.txt
+2021-08-17 16:47:04,707 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:47:12,527 DEBUG   HandlerThread:7988 [meta.py:_save_conda():86] save conda done
+2021-08-17 16:47:12,527 DEBUG   HandlerThread:7988 [meta.py:probe():252] probe done
+2021-08-17 16:47:12,631 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:47:12,631 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:47:12,715 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/conda-environment.yaml
+2021-08-17 16:47:12,715 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_created():216] file/dir created: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-metadata.json
+2021-08-17 16:47:12,772 DEBUG   SenderThread:7988 [sender.py:send():179] send: files
+2021-08-17 16:47:12,772 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-metadata.json with policy now
+2021-08-17 16:47:13,275 INFO    Thread-11 :7988 [upload_job.py:push():137] Uploaded file /scratch/tmpmp3fwe8ywandb/22tr5qz7-wandb-metadata.json
+2021-08-17 16:47:27,688 DEBUG   SenderThread:7988 [sender.py:send():179] send: stats
+2021-08-17 16:47:27,815 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:47:27,816 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:47:43,087 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:47:43,089 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:47:50,751 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:47:58,312 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:47:58,313 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:47:58,606 DEBUG   SenderThread:7988 [sender.py:send():179] send: stats
+2021-08-17 16:47:58,761 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:07,435 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:07,436 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:07,443 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:07,770 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:08,772 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:11,542 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:11,544 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:11,547 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:11,776 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:12,777 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:13,463 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:48:13,463 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:48:15,706 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:15,707 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:15,710 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:15,780 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:16,781 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:19,709 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:19,710 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:19,718 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:19,784 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:20,785 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:23,984 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:23,985 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:23,988 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:24,789 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:26,792 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:28,114 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:28,115 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:28,118 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:28,612 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:48:28,612 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:48:28,794 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:29,561 DEBUG   SenderThread:7988 [sender.py:send():179] send: stats
+2021-08-17 16:48:30,797 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:32,288 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:32,290 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:32,292 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:32,799 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:34,801 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:36,498 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:36,499 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:36,503 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:36,803 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:38,806 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:40,801 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:40,801 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:40,810 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:40,810 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:42,813 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:43,751 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:48:43,751 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status
+2021-08-17 16:48:45,242 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:45,243 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:45,246 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:45,816 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:46,819 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:49,352 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:49,353 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:49,356 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:49,821 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:50,822 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:53,601 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:53,602 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:53,613 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:53,826 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:54,827 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:57,590 DEBUG   SenderThread:7988 [sender.py:send():179] send: history
+2021-08-17 16:48:57,592 DEBUG   SenderThread:7988 [sender.py:send():179] send: summary
+2021-08-17 16:48:57,594 INFO    SenderThread:7988 [sender.py:_save_file():841] saving file wandb-summary.json with policy end
+2021-08-17 16:48:57,830 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/wandb-summary.json
+2021-08-17 16:48:58,831 INFO    Thread-8  :7988 [dir_watcher.py:_on_file_modified():229] file/dir modified: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210817_164657-1ofc8jv9/files/output.log
+2021-08-17 16:48:58,894 DEBUG   HandlerThread:7988 [handler.py:handle_request():124] handle_request: stop_status
+2021-08-17 16:48:58,895 DEBUG   SenderThread:7988 [sender.py:send_request():193] send_request: stop_status

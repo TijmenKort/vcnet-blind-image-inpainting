@@ -1,0 +1,27 @@
+{
+    "os": "Linux-4.19.0-17-amd64-x86_64-with-glibc2.10",
+    "python": "3.8.8",
+    "heartbeatAt": "2021-08-20T08:11:29.209995",
+    "startedAt": "2021-08-20T08:11:27.403119",
+    "docker": null,
+    "gpu": "GeForce GTX 1080 Ti",
+    "gpu_count": 4,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [
+        "--base_cfg",
+        "config.yml"
+    ],
+    "state": "running",
+    "program": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "git@github.com:TijmenKort/vcnet-blind-image-inpainting.git",
+        "commit": "d7d19540a33997d6ef4e54ff88699a512a365d10"
+    },
+    "email": "jlp.kort@gmail.com",
+    "root": "/home/jlpkort/vcnet-blind-image-inpainting",
+    "host": "login-gpu1.lisa.surfsara.nl",
+    "username": "jlpkort",
+    "executable": "/home/jlpkort/anaconda3/bin/python"
+}

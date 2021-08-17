@@ -1,0 +1,33 @@
+
+I0820 10:33:48.919195 28990 trainer.py:240] Using 4 GPUs...
+W0820 10:33:59.718344 28990 warnings.py:109] /pytorch/aten/src/ATen/native/TensorFactories.cpp:361: UserWarning: Deprecation warning: In a future PyTorch release torch.full will no longer return tensors of floating dtype by default. Instead, a bool fill_value will return a tensor of torch.bool dtype, and an integral fill_value will return a tensor of torch.long dtype. Set the optional `dtype` or `out` arguments to suppress this warning.
+tensor(0.1147, device='cuda:0')
+tensor(0.0976, device='cuda:0')
+tensor(0.1542, device='cuda:0')
+tensor(0.1217, device='cuda:0')
+tensor(0.1371, device='cuda:0')
+tensor(0.0893, device='cuda:0')
+tensor(0.0850, device='cuda:0')
+Traceback (most recent call last):
+  File "main.py", line 52, in <module>
+    trainer.run()
+  File "/home/jlpkort/vcnet-blind-image-inpainting/engine/trainer.py", line 92, in run
+    imgs, _ = next(iter(self.image_loader))
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 345, in __next__
+    data = self._next_data()
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 841, in _next_data
+    idx, data = self._get_data()
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 808, in _get_data
+    success, data = self._try_get_data()
+  File "/home/jlpkort/anaconda3/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 761, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/queues.py", line 107, in get
+    if not self._poll(timeout):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/home/jlpkort/anaconda3/lib/python3.8/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)

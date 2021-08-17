@@ -1,0 +1,3 @@
+
+I0817 15:59:31.260210 14210 trainer.py:241] Using 4 GPUs...
+W0817 15:59:39.563450 14210 warnings.py:109] /pytorch/aten/src/ATen/native/TensorFactories.cpp:361: UserWarning: Deprecation warning: In a future PyTorch release torch.full will no longer return tensors of floating dtype by default. Instead, a bool fill_value will return a tensor of torch.bool dtype, and an integral fill_value will return a tensor of torch.long dtype. Set the optional `dtype` or `out` arguments to suppress this warning.

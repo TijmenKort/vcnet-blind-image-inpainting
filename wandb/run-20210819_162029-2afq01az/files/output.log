@@ -1,0 +1,769 @@
+
+I0819 16:21:26.375783 32680 trainer.py:241] Using 4 GPUs...
+W0819 16:21:33.613203 32680 warnings.py:109] /pytorch/aten/src/ATen/native/TensorFactories.cpp:361: UserWarning: Deprecation warning: In a future PyTorch release torch.full will no longer return tensors of floating dtype by default. Instead, a bool fill_value will return a tensor of torch.bool dtype, and an integral fill_value will return a tensor of torch.long dtype. Set the optional `dtype` or `out` arguments to suppress this warning.
+tensor(0.0317, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0068, device='cuda:0')
+tensor(0.0452, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-zx7up6sy'
+tensor(0.0184, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0020, device='cuda:0')
+tensor(0.0020, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0055, device='cuda:0')
+tensor(0.0174, device='cuda:0')
+tensor(0.0118, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0162, device='cuda:0')
+tensor(0.0012, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0208, device='cuda:0')
+tensor(0.0184, device='cuda:0')
+tensor(0.0080, device='cuda:0')
+tensor(0.0270, device='cuda:0')
+tensor(0.0161, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0134, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-l3a3guys'
+tensor(0.0053, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-h4yxc13y'
+tensor(0.0340, device='cuda:0')
+tensor(0.0090, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+tensor(0.0246, device='cuda:0')
+tensor(0.0345, device='cuda:0')
+tensor(0.0120, device='cuda:0')
+tensor(0.0211, device='cuda:0')
+tensor(0.0161, device='cuda:0')
+tensor(0.0297, device='cuda:0')
+tensor(0.0317, device='cuda:0')
+tensor(0.0300, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0195, device='cuda:0')
+tensor(0.0012, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0299, device='cuda:0')
+tensor(0.0046, device='cuda:0')
+tensor(0.0053, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-4imv_758'
+tensor(0.0134, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0428, device='cuda:0')
+tensor(0.0055, device='cuda:0')
+tensor(0.0448, device='cuda:0')
+tensor(0.0055, device='cuda:0')
+tensor(0.0297, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0077, device='cuda:0')
+tensor(0.0299, device='cuda:0')
+tensor(0.0165, device='cuda:0')
+tensor(0.0428, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0160, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0174, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0091, device='cuda:0')
+tensor(0.0297, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0270, device='cuda:0')
+tensor(0.0076, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-n4kptxdc'
+tensor(0.0012, device='cuda:0')
+tensor(0.0118, device='cuda:0')
+tensor(0.0246, device='cuda:0')
+tensor(0.0174, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0228, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0148, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-qxejetwb'
+tensor(0.0121, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0208, device='cuda:0')
+tensor(0.0238, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-b96vk9zk'
+tensor(0.0324, device='cuda:0')
+tensor(0.0153, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-zo751d7l'
+tensor(0.0162, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-zn1vip7t'
+tensor(0.0066, device='cuda:0')
+tensor(0.0314, device='cuda:0')
+tensor(0.0084, device='cuda:0')
+tensor(0.0092, device='cuda:0')
+tensor(0.0148, device='cuda:0')
+tensor(0.0242, device='cuda:0')
+tensor(0.0233, device='cuda:0')
+tensor(0.0270, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0076, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0162, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-9z_pvqhs'
+tensor(0.0320, device='cuda:0')
+tensor(0.0346, device='cuda:0')
+tensor(0.0430, device='cuda:0')
+tensor(0.0195, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0158, device='cuda:0')
+tensor(0.0233, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+tensor(0.0215, device='cuda:0')
+tensor(0.0148, device='cuda:0')
+tensor(0.0151, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+tensor(0.0162, device='cuda:0')
+tensor(0.0252, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0270, device='cuda:0')
+tensor(0.0233, device='cuda:0')
+tensor(0.0161, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0393, device='cuda:0')
+tensor(0.0120, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-19j0ikyv'
+tensor(0.0317, device='cuda:0')
+tensor(0.0270, device='cuda:0')
+tensor(0.0258, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0242, device='cuda:0')
+tensor(0.0160, device='cuda:0')
+tensor(0.0187, device='cuda:0')
+tensor(0.0053, device='cuda:0')
+tensor(0.0092, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+tensor(0.0346, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0018, device='cuda:0')
+tensor(0.0251, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0345, device='cuda:0')
+tensor(0.0084, device='cuda:0')
+tensor(0.0018, device='cuda:0')
+tensor(0.0118, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0211, device='cuda:0')
+tensor(0.0211, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-bb8rsdch'
+tensor(0.0190, device='cuda:0')
+tensor(0.0018, device='cuda:0')
+tensor(0.0299, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0054, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0158, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+tensor(0.0018, device='cuda:0')
+tensor(0.0184, device='cuda:0')
+tensor(0.0346, device='cuda:0')
+tensor(0.0345, device='cuda:0')
+tensor(0.0314, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0448, device='cuda:0')
+tensor(0.0175, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0297, device='cuda:0')
+tensor(0.0246, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+tensor(0.0040, device='cuda:0')
+tensor(0.0252, device='cuda:0')
+tensor(0.0160, device='cuda:0')
+tensor(0.0160, device='cuda:0')
+tensor(0.0038, device='cuda:0')
+tensor(0.0428, device='cuda:0')
+tensor(0.0092, device='cuda:0')
+tensor(0.0228, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-54vk90hz'
+tensor(0.0213, device='cuda:0')
+tensor(0.0092, device='cuda:0')
+tensor(0.0092, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-pnsbwwi0'
+tensor(0.0233, device='cuda:0')
+tensor(0.0040, device='cuda:0')
+tensor(0.0208, device='cuda:0')
+tensor(0.0046, device='cuda:0')
+tensor(0.0055, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-aci2sev8'
+tensor(0.0430, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0023, device='cuda:0')
+tensor(0.0242, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0121, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0175, device='cuda:0')
+tensor(0.0228, device='cuda:0')
+tensor(0.0314, device='cuda:0')
+tensor(0.0053, device='cuda:0')
+tensor(0.0090, device='cuda:0')
+tensor(0.0095, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0195, device='cuda:0')
+tensor(0.0195, device='cuda:0')
+tensor(0.0252, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0314, device='cuda:0')
+tensor(0.0346, device='cuda:0')
+tensor(0.0240, device='cuda:0')
+tensor(0.0258, device='cuda:0')
+tensor(0.0208, device='cuda:0')
+tensor(0.0121, device='cuda:0')
+tensor(0.0242, device='cuda:0')
+tensor(0.0187, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0151, device='cuda:0')
+tensor(0.0246, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0300, device='cuda:0')
+tensor(0.0324, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0054, device='cuda:0')
+tensor(0.0251, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0153, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0246, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0215, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0251, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0175, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0151, device='cuda:0')
+tensor(0.0158, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0299, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-1hrvjqy0'
+tensor(0.0187, device='cuda:0')
+tensor(0.0345, device='cuda:0')
+tensor(0.0233, device='cuda:0')
+tensor(0.0307, device='cuda:0')
+tensor(0.0368, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0080, device='cuda:0')
+tensor(0.0252, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-oev2jkmz'
+tensor(0.0258, device='cuda:0')
+tensor(0.0165, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0097, device='cuda:0')
+tensor(0.0053, device='cuda:0')
+tensor(0.0054, device='cuda:0')
+tensor(0.0038, device='cuda:0')
+tensor(0.0092, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0160, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-uyv0jiji'
+tensor(0.0037, device='cuda:0')
+tensor(0.0448, device='cuda:0')
+tensor(0.0165, device='cuda:0')
+tensor(0.0038, device='cuda:0')
+tensor(0.0393, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0102, device='cuda:0')
+tensor(0.0020, device='cuda:0')
+tensor(0.0172, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0174, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0153, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-2he17qx1'
+tensor(0.0046, device='cuda:0')
+tensor(0.0215, device='cuda:0')
+tensor(0.0186, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0430, device='cuda:0')
+tensor(0.0346, device='cuda:0')
+tensor(0.0038, device='cuda:0')
+tensor(0.0300, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+tensor(0.0158, device='cuda:0')
+tensor(0.0207, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0068, device='cuda:0')
+tensor(0.0132, device='cuda:0')
+tensor(0.0158, device='cuda:0')
+tensor(0.0044, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0091, device='cuda:0')
+tensor(0.0238, device='cuda:0')
+tensor(0.0346, device='cuda:0')
+tensor(0.0148, device='cuda:0')
+tensor(0.0069, device='cuda:0')
+tensor(0.0097, device='cuda:0')
+tensor(0.0080, device='cuda:0')
+tensor(0.0317, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+tensor(0.0299, device='cuda:0')
+tensor(0.0121, device='cuda:0')
+tensor(0.0307, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0097, device='cuda:0')
+tensor(0.0208, device='cuda:0')
+tensor(0.0132, device='cuda:0')
+tensor(0.0080, device='cuda:0')
+tensor(0.0046, device='cuda:0')
+tensor(0.0307, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0175, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0211, device='cuda:0')
+tensor(0.0452, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0300, device='cuda:0')
+tensor(0.0095, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-usic0we9'
+tensor(0.0317, device='cuda:0')
+tensor(0.0012, device='cuda:0')
+tensor(0.0215, device='cuda:0')
+tensor(0.0134, device='cuda:0')
+tensor(0.0151, device='cuda:0')
+tensor(0.0055, device='cuda:0')
+tensor(0.0077, device='cuda:0')
+tensor(0.0102, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0053, device='cuda:0')
+tensor(0.0246, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0128, device='cuda:0')
+tensor(0.0195, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-d5iu4tgt'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-4mw1be8y'
+tensor(0.0228, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-umfw92g_'
+tensor(0.0066, device='cuda:0')
+tensor(0.0205, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0252, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0084, device='cuda:0')
+tensor(0.0123, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-h2h_j40m'
+tensor(0.0077, device='cuda:0')
+tensor(0.0208, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+tensor(0.0134, device='cuda:0')
+tensor(0.0314, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+tensor(0.0020, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0151, device='cuda:0')
+tensor(0.0186, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-xb0582oz'
+tensor(0.0102, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+tensor(0.0448, device='cuda:0')
+tensor(0.0320, device='cuda:0')
+tensor(0.0258, device='cuda:0')
+tensor(0.0040, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-lkkpvs_t'
+tensor(0.0151, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-ra81lzh4'
+tensor(0.0151, device='cuda:0')
+tensor(0.0046, device='cuda:0')
+tensor(0.0289, device='cuda:0')
+tensor(0.0134, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0102, device='cuda:0')
+tensor(0.0213, device='cuda:0')
+tensor(0.0102, device='cuda:0')
+tensor(0.0242, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0012, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0051, device='cuda:0')
+tensor(0.0178, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+tensor(0.0125, device='cuda:0')
+tensor(0.0162, device='cuda:0')
+tensor(0.0121, device='cuda:0')
+tensor(0.0018, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0098, device='cuda:0')
+tensor(0.0324, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0018, device='cuda:0')
+tensor(0.0132, device='cuda:0')
+tensor(0.0121, device='cuda:0')
+tensor(0.0165, device='cuda:0')
+tensor(0.0012, device='cuda:0')
+tensor(0.0084, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0340, device='cuda:0')
+tensor(0.0161, device='cuda:0')
+tensor(0.0230, device='cuda:0')
+tensor(0.0190, device='cuda:0')
+tensor(0.0066, device='cuda:0')
+tensor(0.0080, device='cuda:0')
+tensor(0.0022, device='cuda:0')
+tensor(0.0324, device='cuda:0')
+tensor(0.0317, device='cuda:0')
+tensor(0.0118, device='cuda:0')
+tensor(0.0258, device='cuda:0')
+tensor(0.0184, device='cuda:0')
+tensor(0.0148, device='cuda:0')
+tensor(0.0095, device='cuda:0')
+tensor(0.0345, device='cuda:0')
+tensor(0.0233, device='cuda:0')
+tensor(0.0262, device='cuda:0')
+tensor(0.0037, device='cuda:0')
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-vw4ku71s'
+tensor(0.0448, device='cuda:0')
