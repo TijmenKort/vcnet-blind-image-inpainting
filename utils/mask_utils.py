@@ -15,10 +15,9 @@ import random # added
 def mask_loader():
 
     # load list of masks
-    mask_list = os.listdir('./datasets/masks_tvb_256_large')
-    rdm_idx = random.randrange(len(mask_list))
+    mask_path = random.choice(os.listdir('./datasets/masks_tvb_720'))
 
-    with Image.open("{}/{}".format('./datasets/masks_tvb_256_large', mask_list[rdm_idx])) as mask:
+    with Image.open("{}/{}".format('./datasets/masks_tvb_256_large', mask_path)) as mask:
         trans = transforms.ToTensor()
         mask = trans(mask)
         mask = np.reshape(mask, (1, 3, 256, 256))

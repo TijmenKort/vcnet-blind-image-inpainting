@@ -56,7 +56,7 @@ class Trainer:
         self.mask_smoother = ConfidenceDrivenMaskLayer(self.opt.MASK.GAUS_K_SIZE, self.opt.MASK.SIGMA)
         # self.mask_smoother = GaussianSmoothing(1, 5, 1/40)
         # ADDED MASK LOADER
-        self.mask_loader = mask_loader()
+        self.mask_loader = mask_loader
 
 
         self.to_pil = transforms.ToPILImage()
@@ -94,22 +94,8 @@ class Trainer:
             imgs = linear_scaling(imgs.float().cuda())
             batch_size, channels, h, w = imgs.size()
 
-            # print('BATCH: ', batch_size, "\nCHANNELS: ", channels, "\nHxW: ", h, w)
-
-            masks_x = torch.from_numpy(self.mask_generator.generate(h, w)).repeat([batch_size, 1, 1, 1]).float().cuda()
-
-
-            # ADDED NEW CODE FOR MASKS
-            masks = self.mask_loader.repeat([batch_size, 1, 1, 1]).float().cuda()
-
-            # # looking at a mask
-            # print('TYPE: ', type(masks))
-            # print('SIZE: ', masks.size())
-            # print('MASKS: ', masks)
-
-            # im = self.to_pil(masks[0].cpu())
-            # im.save('mask.png')
-            # # ------------------------
+            # load masks from directory
+            masks = self.mask_loader().repeat([batch_size, 1, 1, 1]).float().cuda()
 
             # cont_imgs, _ = next(iter(self.cont_image_loader))
             cont_imgs = masks.clone()
@@ -190,7 +176,7 @@ class Trainer:
             self.optimizer_rin.zero_grad()
 
             pred_masks, neck = self.mpn(x)
-            m_loss = self.weighted_bce_loss(pred_masks, y_masks, torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
+            m_loss = self.weighted_bce_loss(pred_masks, y_masks) # torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
             self.wandb.log({"m_loss": m_loss.item()}, commit=False)
             m_loss = self.opt.OPTIM.MASK * m_loss
             m_loss.backward(retain_graph=True)
@@ -216,7 +202,7 @@ class Trainer:
         else:
             self.optimizer_joint.zero_grad()
             pred_masks, neck = self.mpn(x)
-            m_loss = self.weighted_bce_loss(pred_masks, y_masks, torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
+            m_loss = self.weighted_bce_loss(pred_masks, y_masks) # torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
             self.wandb.log({"m_loss": m_loss.item()}, commit=False)
             m_loss = self.opt.OPTIM.MASK * m_loss
             if self.opt.MODEL.RIN.EMBRACE:
