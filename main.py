@@ -1,6 +1,6 @@
 import glog as log
 import argparse
-from engine.trainer import Trainer, RaindropTrainer
+from engine.trainer import Trainer
 # from engine.tester import Tester
 from utils.config import get_cfg_defaults
 
@@ -34,21 +34,16 @@ if __name__ == '__main__':
     cfg = get_cfg_defaults()
     # cfg.merge_from_file(args.base_cfg)
     cfg.MODEL.IS_TRAIN = not args.test
-    cfg.TRAIN.TUNE = args.tune
     # cfg.DATASET.NAME = args.dataset
     # cfg.DATASET.ROOT = args.dataset_dir
-    # cfg.DATASET.CONT_ROOT = args.cont_dataset_dir
-    # cfg.DATASET.IMAGENET = args.imagenet
     cfg.TEST.WEIGHTS = args.weights
-    if cfg.MODEL.RAINDROP_TUNE:
-        cfg.MODEL.RAINDROP_WEIGHTS = args.weights
     # cfg.TEST.ABLATION = args.ablation
     # cfg.TEST.MODE = args.test_mode
     # cfg.freeze()
     print(cfg)
 
     if cfg.MODEL.IS_TRAIN:
-        trainer = Trainer(cfg) if not cfg.MODEL.RAINDROP_TUNE else RaindropTrainer(cfg)
+        trainer = Trainer(cfg)
         trainer.run()
     else:
         tester = Tester(cfg)
@@ -82,8 +77,5 @@ if __name__ == '__main__':
             # tester.infer(img_path, cont_path, mode=7, text="furkan", color="BLUE")  # problematic
             # tester.infer(img_path, img_path_2, mask_path=mask_path, mode=8, output_dir="../../Downloads")  # problematic
 
-            raindrop_img_path = "datasets/raindrop/train20/test/data/4_rain.png"
-            raindrop_gt_path = "datasets/raindrop/train20/test/gt/4_clean.png"
-            tester.infer(raindrop_img_path, mode=4, gt_path=raindrop_gt_path)
             # quantitative
             # tester.eval()
