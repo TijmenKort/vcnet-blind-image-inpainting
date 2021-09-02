@@ -1,6 +1,6 @@
 #!/bin/bash
 #Set job requirements
-#SBATCH -t 05:00:00
+#SBATCH -t 08:00:00
 #SBATCH -p gpu
 #SBATCH --gpus-per-node=gtx1080ti:4
 #SBATCH --mail-type=BEGIN,END

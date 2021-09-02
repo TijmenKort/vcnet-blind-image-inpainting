@@ -2,7 +2,7 @@ import os
 import torch
 import wandb
 import glog as log
-import numpy as np
+# import numpy as np
 
 from torch.utils import data
 from torchvision import transforms
@@ -13,15 +13,14 @@ from losses.bce import WeightedBCELoss
 from losses.consistency import SemanticConsistencyLoss, IDMRFLoss
 from losses.adversarial import compute_gradient_penalty
 from utils.mask_utils import mask_loader, mask_binary
-from utils.data_utils import linear_scaling, linear_unscaling, get_random_string
-
+from utils.data_utils import linear_scaling, linear_unscaling
 # torch.autograd.set_detect_anomaly(True)
 
 
 class Trainer:
     def __init__(self, opt):
         self.opt = opt
-        assert self.opt.DATASET.NAME.lower() in ["ffhq", "places"]
+        assert self.opt.DATASET.NAME.lower() in ["tvb", "ffhq"]
 
         self.model_name = "{}_{}".format(self.opt.MODEL.NAME, self.opt.DATASET.NAME) + \
             "_{}step_{}bs".format(self.opt.TRAIN.NUM_TOTAL_STEP, self.opt.TRAIN.BATCH_SIZE) + \
@@ -44,12 +43,12 @@ class Trainer:
             # transforms.Normalize(self.opt.DATASET.MEAN, self.opt.DATASET.STD)
         ])
         self.dataset = ImageFolder(
-            root=self.opt.DATASET.ROOT, 
+            root=self.opt.DATASET.ROOT,
             transform=self.transform
         )
         self.image_loader = data.DataLoader(
-            dataset=self.dataset, 
-            batch_size=self.opt.TRAIN.BATCH_SIZE, 
+            dataset=self.dataset,
+            batch_size=self.opt.TRAIN.BATCH_SIZE,
             shuffle=self.opt.TRAIN.SHUFFLE,
             num_workers=self.opt.SYSTEM.NUM_WORKERS
         )
@@ -84,6 +83,7 @@ class Trainer:
 
     def run(self):
         while self.num_step < self.opt.TRAIN.NUM_TOTAL_STEP:
+            torch.cuda.empty_cache()
             self.num_step += 1
             info = " [Step: {}/{} ({}%)] ".format(self.num_step, self.opt.TRAIN.NUM_TOTAL_STEP, 100 * self.num_step / self.opt.TRAIN.NUM_TOTAL_STEP)
 
@@ -93,24 +93,23 @@ class Trainer:
             batch_size, channels, h, w = imgs.size()
 
             # load masks from directory
-            masks = self.mask_loader().repeat([batch_size, 1, 1, 1]).float().cuda()
+            masks = self.mask_loader(h, w, self.opt.DATASET.MASKS).repeat([batch_size, 1, 1, 1]).float().cuda()
 
             # cont_imgs, _ = next(iter(self.cont_image_loader))
-            cont_imgs = masks.clone()
-            cont_imgs = linear_scaling(cont_imgs.float().cuda())
+            cont_imgs = masks.clone().cpu()
+            cont_imgs = linear_scaling(cont_imgs.float())
             if cont_imgs.size(0) != imgs.size(0):
                 cont_imgs = cont_imgs[:imgs.size(0)]
 
             # create a binary tensor of masks
-            masks = torch.stack([mask_binary(mask) for mask in masks])
+            masks = torch.stack([mask_binary(mask, h, w) for mask in masks])
 
-            masked_imgs = cont_imgs * masks + imgs * (1. - masks)
+            masked_imgs = (cont_imgs * masks.cpu() + imgs.cpu() * (1. - masks.cpu())).cuda()
             self.unknown_pixel_ratio = torch.sum(masks.view(batch_size, -1), dim=1).mean() / (h * w)
 
             for _ in range(self.opt.MODEL.D.NUM_CRITICS):
                 d_loss = self.train_D(masked_imgs, masks, y_imgs)
             info += "D Loss: {} ".format(d_loss)
-
             m_loss, g_loss, pred_masks, output = self.train_G(masked_imgs, masks, y_imgs)
             info += "M Loss: {} G Loss: {} ".format(m_loss, g_loss)
 
@@ -165,12 +164,18 @@ class Trainer:
         return d_loss.item()
 
     def train_G(self, x, y_masks, y):
+        torch.cuda.empty_cache()
         if self.num_step < self.opt.TRAIN.NUM_STEPS_FOR_JOINT:
             self.optimizer_mpn.zero_grad()
             self.optimizer_rin.zero_grad()
 
             pred_masks, neck = self.mpn(x)
-            m_loss = self.weighted_bce_loss(pred_masks, y_masks) # torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
+            # m_loss = self.weighted_bce_loss(pred_masks, y_masks, torch.tensor([1 - (self.unknown_pixel_ratio*3), (self.unknown_pixel_ratio*3)])) # torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
+            batch_size, channels, h, w = y_masks.size()
+            pixels = batch_size * channels * h * w
+            weight = ((1 - self.unknown_pixel_ratio) * pixels) / (self.unknown_pixel_ratio * pixels)
+            m_loss_func = torch.nn.BCEWithLogitsLoss(pos_weight=weight).cuda()
+            m_loss = m_loss_func(pred_masks, y_masks)
             self.wandb.log({"m_loss": m_loss.item()}, commit=False)
             m_loss = self.opt.OPTIM.MASK * m_loss
             m_loss.backward(retain_graph=True)
@@ -196,7 +201,14 @@ class Trainer:
         else:
             self.optimizer_joint.zero_grad()
             pred_masks, neck = self.mpn(x)
-            m_loss = self.weighted_bce_loss(pred_masks, y_masks) # torch.tensor([1 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
+            # m_loss = self.weighted_bce_loss(pred_masks, y_masks, torch.tensor([0.5 - self.unknown_pixel_ratio, self.unknown_pixel_ratio]))
+            
+            batch_size, channels, h, w = y_masks.size()
+            pixels = batch_size * channels * h * w
+            weight = ((1 - self.unknown_pixel_ratio) * pixels) / (self.unknown_pixel_ratio * pixels)
+            m_loss_func = torch.nn.BCEWithLogitsLoss(pos_weight=weight).cuda()
+            m_loss = m_loss_func(pred_masks, y_masks)
+
             self.wandb.log({"m_loss": m_loss.item()}, commit=False)
             m_loss = self.opt.OPTIM.MASK * m_loss
             if self.opt.MODEL.RIN.EMBRACE:
@@ -221,7 +233,7 @@ class Trainer:
             self.optimizer_joint.step()
         self.wandb.log({"recon_loss": recon_loss.item(),
                         "sem_const_loss": sem_const_loss.item(),
-                        "tex_const_loss": tex_const_loss.item(),
+                        # "tex_const_loss": tex_const_loss.item(),
                         "adv_global_loss": adv_global_loss.item(),
                         "adv_patch_loss": adv_patch_loss.item(),
                         "adv_loss": adv_loss.item()}, commit=False)
@@ -234,6 +246,7 @@ class Trainer:
             self.rin = torch.nn.DataParallel(self.rin).cuda()
             self.discriminator = torch.nn.DataParallel(self.discriminator).cuda()
             self.patch_discriminator = torch.nn.DataParallel(self.patch_discriminator).cuda()
+
         else:
             log.info("GPU ID: {}".format(torch.cuda.current_device()))
             self.mpn = self.mpn.cuda()

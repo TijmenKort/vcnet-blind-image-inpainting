@@ -8,15 +8,9 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("--base_cfg", default="./wandb/run-20201023_213704-3o2q3c4r/config.yaml", metavar="FILE", help="path to config file")
 parser.add_argument("--weights", "-w", default=None, help="weights for VCNet")
-parser.add_argument("--dataset", "-d", default="FFHQ", help="dataset names: FFHQ, Places")
-parser.add_argument("--dataset_dir", default="./datasets/ffhq/images1024x1024", help="dataset directory: './datasets/ffhq/images1024x1024', "
-                                                                                     " './datasets/Places/imgs'")
-parser.add_argument("--cont_dataset_dir", default="./datasets/CelebAMask-HQ", help="contaminant dataset directory: './datasets/CelebAMask-HQ', "
-                                                                                   " './datasets/ImageNet/'")
-parser.add_argument("--imagenet", default="./datasets/ImageNet/", help="imagenet directory: './datasets/ImageNet/'")
-
+parser.add_argument("--dataset", "-d", default="TVB", help="dataset names: FFHQ, TVB")
+parser.add_argument("--dataset_dir", default="./datasets/data_tvb_480", help="dataset directory: './datasets/data_tvb_480'")
 parser.add_argument("--tune", action="store_true", help="true for starting tune for ablation studies")
-
 parser.add_argument("--test", "-t", action="store_true", help="true for testing phase")
 parser.add_argument("--ablation", "-a", action="store_true", help="true for ablation studies")
 parser.add_argument("--test_mode", default=1, help="test mode: 1: contaminant image,"
