@@ -8,9 +8,6 @@ from torchvision import transforms
 def mask_loader(h, w, mask_dir):
     """
     Load single mask randomly from the mask dataset
-
-    TODO:
-    add a implementation for non-hardcoded dir path
     """
 
     # asign transform variable

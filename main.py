@@ -1,7 +1,7 @@
 import glog as log
 import argparse
 from engine.trainer import Trainer
-# from engine.tester import Tester
+from engine.tester import Tester
 from utils.config import get_cfg_defaults
 
 parser = argparse.ArgumentParser()
@@ -27,10 +27,10 @@ args = parser.parse_args()
 if __name__ == '__main__':
     cfg = get_cfg_defaults()
     # cfg.merge_from_file(args.base_cfg)
-    cfg.MODEL.IS_TRAIN = not args.test
+    # cfg.MODEL.IS_TRAIN = not args.test
     # cfg.DATASET.NAME = args.dataset
     # cfg.DATASET.ROOT = args.dataset_dir
-    cfg.TEST.WEIGHTS = args.weights
+    # cfg.TEST.WEIGHTS = args.weights
     # cfg.TEST.ABLATION = args.ablation
     # cfg.TEST.MODE = args.test_mode
     # cfg.freeze()
@@ -72,4 +72,4 @@ if __name__ == '__main__':
             # tester.infer(img_path, img_path_2, mask_path=mask_path, mode=8, output_dir="../../Downloads")  # problematic
 
             # quantitative
-            # tester.eval()
+            tester.eval()

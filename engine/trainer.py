@@ -30,9 +30,9 @@ class Trainer:
         self.opt.WANDB.LOG_DIR = os.path.join("./logs/", self.model_name)
         self.wandb = wandb
         self.wandb.init(
-            project=self.opt.WANDB.PROJECT_NAME, 
-            resume=self.opt.TRAIN.RESUME, 
-            notes=self.opt.WANDB.LOG_DIR, 
+            project=self.opt.WANDB.PROJECT_NAME,
+            resume=self.opt.TRAIN.RESUME,
+            notes=self.opt.WANDB.LOG_DIR,
             config=self.opt, entity=self.opt.WANDB.ENTITY
         )
 
@@ -233,7 +233,7 @@ class Trainer:
             self.optimizer_joint.step()
         self.wandb.log({"recon_loss": recon_loss.item(),
                         "sem_const_loss": sem_const_loss.item(),
-                        # "tex_const_loss": tex_const_loss.item(),
+                        "tex_const_loss": tex_const_loss.item(),
                         "adv_global_loss": adv_global_loss.item(),
                         "adv_patch_loss": adv_patch_loss.item(),
                         "adv_loss": adv_loss.item()}, commit=False)

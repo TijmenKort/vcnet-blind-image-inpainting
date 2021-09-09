@@ -145,8 +145,7 @@ class Discriminator(BaseNetwork):
         # 4 convolutions of stride 2, i.e. halving of size everytime
         # So output size will be 8 * (img_size / 2 ^ 4) * (img_size / 2 ^ 4)
         # TODO: Work out way to NOT hardcode outputsize. This only works for 512x512
-        output_size = 32 * base_n_channels * 8 * 8
-        print("SIZE OF OUPUT: ", output_size)
+        output_size = 8 * base_n_channels * 8 * 8
         self.features_to_prob = nn.Sequential(
             nn.Linear(output_size, 1)
         )
@@ -157,7 +156,7 @@ class Discriminator(BaseNetwork):
         batch_size = input_data.size()[0]
         x = self.image_to_features(input_data)
         x = x.view(batch_size, -1)
-        print("SIZE OF X: ", x.size())
+
         return self.features_to_prob(x)
 
 
@@ -185,18 +184,18 @@ class PatchDiscriminator(Discriminator):
 
 
 if __name__ == '__main__':
-    mpn = MPN(128, 256)
-    inp = torch.rand((2, 3, 256, 512))
+    mpn = MPN(64, 128)
+    inp = torch.rand((2, 3, 256, 256))
     _, neck = mpn(inp)
     print(neck.size())
-    rin = RIN(64, 256)
-    inp = torch.rand((2, 3, 256, 512))
-    mask = torch.rand((2, 1, 256, 512))
+    rin = RIN(32, 128)
+    inp = torch.rand((2, 3, 256, 256))
+    mask = torch.rand((2, 1, 256, 256))
     out = rin(inp, mask, neck)
     print(out.size())
-    disc = Discriminator(128)
+    disc = Discriminator(64)
     d_out = disc(out)
     print(d_out.size())
-    patch_disc = PatchDiscriminator(128)
+    patch_disc = PatchDiscriminator(64)
     p_d_out = patch_disc(out, mask)
     print(p_d_out.size())

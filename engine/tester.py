@@ -14,11 +14,9 @@ from torch.utils import data
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
 
-from datasets.graffiti_dataset.dataset import DatasetSample as sample_graffiti
-
 from modeling.architecture import MPN, RIN, Discriminator
 from utils.data_utils import linear_scaling, linear_unscaling
-from utils.mask_utils import MaskGenerator, ConfidenceDrivenMaskLayer, COLORS
+from utils.mask_utils import mask_loader, mask_binary
 from metrics.psnr import PSNR
 from metrics.ssim import SSIM
 from losses.bce import WeightedBCELoss
@@ -52,11 +50,12 @@ class Tester:
                                              ])
         self.dataset = ImageFolder(root=self.opt.DATASET.ROOT, transform=self.transform)
         self.image_loader = data.DataLoader(dataset=self.dataset, batch_size=self.opt.TEST.BATCH_SIZE, shuffle=self.opt.TRAIN.SHUFFLE, num_workers=self.opt.SYSTEM.NUM_WORKERS)
-        self.cont_dataset = ImageFolder(root=self.opt.DATASET.CONT_ROOT, transform=self.transform)
-        self.cont_image_loader = data.DataLoader(dataset=self.cont_dataset, batch_size=self.opt.TEST.BATCH_SIZE, shuffle=self.opt.TRAIN.SHUFFLE, num_workers=self.opt.SYSTEM.NUM_WORKERS)
-        self.mask_generator = MaskGenerator(self.opt.MASK)
-        self.mask_smoother = ConfidenceDrivenMaskLayer(self.opt.MASK.GAUS_K_SIZE, self.opt.MASK.SIGMA)
-
+        # self.cont_dataset = ImageFolder(root=self.opt.DATASET.CONT_ROOT, transform=self.transform)
+        # self.cont_image_loader = data.DataLoader(dataset=self.cont_dataset, batch_size=self.opt.TEST.BATCH_SIZE, shuffle=self.opt.TRAIN.SHUFFLE, num_workers=self.opt.SYSTEM.NUM_WORKERS)
+        
+        # ADDED MASK LOADER
+        self.mask_loader = mask_loader
+        
         self.to_pil = transforms.ToPILImage()
         self.tensorize = transforms.ToTensor()
 
@@ -66,23 +65,40 @@ class Tester:
 
         log.info("Checkpoints loading...")
         self.load_checkpoints(self.opt.TEST.WEIGHTS)
+        self.remove_module_str
 
         self.mpn = self.mpn.cuda()
         self.rin = self.rin.cuda()
         self.discriminator = self.discriminator.cuda()
-        self.mask_smoother = self.mask_smoother.cuda()
+        # self.mask_smoother = torch.nn.DataParallel(self.mask_smoother).cuda()
 
         self.PSNR = kornia.losses.psnr.PSNRLoss(max_val=1.)
         self.SSIM = SSIM()  # kornia's SSIM is buggy.
         self.BCE = WeightedBCELoss()
 
+    def remove_module_str(self, d):
+        """
+        Removing ".module" from weights when DataParallel is used
+        when saving module.
+        """
+
+        d = {k.replace("module.", ""): v for k, v in d.items()}
+
+        return d
+
     def load_checkpoints(self, fname=None):
+        """
+        Loading checkpoints. 
+        TODO: Probably getting errors because of DataParallel
+        """
+        print("\n\nFNAME: ", fname)
+
         if fname is None:
             fname = "{}/{}/checkpoint-{}.pth".format(self.opt.TRAIN.SAVE_DIR, self.model_name, self.opt.TRAIN.START_STEP)
         checkpoints = torch.load(fname)
-        self.mpn.load_state_dict(checkpoints["mpn"])
-        self.rin.load_state_dict(checkpoints["rin"])
-        self.discriminator.load_state_dict(checkpoints["D"])
+        self.mpn.load_state_dict(self.remove_module_str(checkpoints["mpn"]))
+        self.rin.load_state_dict(self.remove_module_str(checkpoints["rin"]))
+        self.discriminator.load_state_dict(self.remove_module_str(checkpoints["D"]))
 
     def eval(self):
         psnr_lst, ssim_lst, bce_lst = list(), list(), list()
@@ -91,16 +107,31 @@ class Tester:
                 imgs = linear_scaling(imgs.float().cuda())
                 batch_size, channels, h, w = imgs.size()
 
-                masks = torch.from_numpy(self.mask_generator.generate(h, w)).repeat([batch_size, 1, 1, 1]).float().cuda()
-                smooth_masks = self.mask_smoother(1 - masks) + masks
-                smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
+                # masks = torch.from_numpy(self.mask_generator.generate(h, w)).repeat([batch_size, 1, 1, 1]).float().cuda()
+                # smooth_masks = self.mask_smoother(1 - masks) + masks
+                # smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
 
-                cont_imgs, _ = next(iter(self.cont_image_loader))
-                cont_imgs = linear_scaling(cont_imgs.float().cuda())
+                # cont_imgs, _ = next(iter(self.cont_image_loader))
+                # cont_imgs = linear_scaling(cont_imgs.float().cuda())
+                # if cont_imgs.size(0) != imgs.size(0):
+                #     cont_imgs = cont_imgs[:imgs.size(0)]
+
+                # masked_imgs = cont_imgs * smooth_masks + imgs * (1. - smooth_masks)
+                # load masks from directory
+                masks = self.mask_loader(h, w, self.opt.DATASET.MASKS).repeat([batch_size, 1, 1, 1]).float().cuda()
+
+                # cont_imgs, _ = next(iter(self.cont_image_loader))
+                cont_imgs = masks.clone().cpu()
+                cont_imgs = linear_scaling(cont_imgs.float())
                 if cont_imgs.size(0) != imgs.size(0):
                     cont_imgs = cont_imgs[:imgs.size(0)]
 
-                masked_imgs = cont_imgs * smooth_masks + imgs * (1. - smooth_masks)
+                # create a binary tensor of masks
+                masks = torch.stack([mask_binary(mask, h, w) for mask in masks])
+
+                masked_imgs = (cont_imgs * masks.cpu() + imgs.cpu() * (1. - masks.cpu())).cuda()
+
+                
                 pred_masks, neck = self.mpn(masked_imgs)
                 masked_imgs_embraced = masked_imgs * (1. - pred_masks)
                 output = self.rin(masked_imgs_embraced, pred_masks, neck)
