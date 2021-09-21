@@ -1,0 +1,821 @@
+Looking in links: https://download.pytorch.org/whl/torch_stable.html
+Requirement already satisfied: torch==1.5.0+cu101 in /home/jlpkort/anaconda3/lib/python3.8/site-packages (1.5.0+cu101)
+Requirement already satisfied: torchvision==0.6.0+cu101 in /home/jlpkort/anaconda3/lib/python3.8/site-packages (0.6.0+cu101)
+Requirement already satisfied: future in /home/jlpkort/anaconda3/lib/python3.8/site-packages (from torch==1.5.0+cu101) (0.18.2)
+Requirement already satisfied: numpy in /home/jlpkort/anaconda3/lib/python3.8/site-packages (from torch==1.5.0+cu101) (1.17.4)
+Requirement already satisfied: pillow>=4.1.1 in /home/jlpkort/anaconda3/lib/python3.8/site-packages (from torchvision==0.6.0+cu101) (8.2.0)
+ERROR: Could not find a version that satisfies the requirement opencv_contrib_python_nonfree==4.1.1.1
+ERROR: No matching distribution found for opencv_contrib_python_nonfree==4.1.1.1
+wandb: Currently logged in as: tijmenk_ (use `wandb login --relogin` to force relogin)
+DATASET:
+  MASKS: ./datasets/masks_tv_256
+  NAME: TVB
+  ROOT: ./datasets/data_256
+  SIZE_H: 256
+  SIZE_W: 256
+MODEL:
+  D:
+    BETAS: (0.9, 0.99)
+    LR: 1e-05
+    NAME: 1-ChOutputDiscriminator
+    NUM_CHANNELS: 64
+    NUM_CRITICS: 5
+  IS_TRAIN: True
+  JOINT:
+    BETAS: (0.9, 0.99)
+    LR: 0.0002
+    NAME: JointNetwork
+  MPN:
+    BETAS: (0.9, 0.99)
+    LOSS_COEFF: 1.0
+    LR: 1e-05
+    NAME: MaskPredictionNetwork
+    NECK_CHANNELS: 128
+    NUM_CHANNELS: 64
+  NAME: VCNet
+  RIN:
+    BETAS: (0.9, 0.99)
+    EMBRACE: True
+    LOSS_COEFF: 2.0
+    LR: 1e-06
+    NAME: RobustInpaintingNetwork
+    NECK_CHANNELS: 128
+    NUM_CHANNELS: 32
+OPTIM:
+  ADVERSARIAL: 0.001
+  GP: 10
+  MASK: 1
+  RECON: 1.4
+  SEMANTIC: 0.01
+  TEXTURE: 0.1
+SYSTEM:
+  NUM_GPU: 4
+  NUM_WORKERS: 16
+TEST:
+  ABLATION: False
+  BATCH_SIZE: 64
+  C_IMG_ID: 38
+  IMG_ID: 52
+  ITER: 4
+  MODE: 1
+  OUTPUT_DIR: ./outputs
+  WEIGHTS: ./weights/VCNet_TVB_100000step_4bs_0.0002lr_4gpu_16run/checkpoint-30000.pth
+TRAIN:
+  BATCH_SIZE: 4
+  LOG_INTERVAL: 500
+  NUM_STEPS_FOR_JOINT: 6600
+  NUM_TOTAL_STEP: 15000
+  RESUME: False
+  SAVE_DIR: ./weights
+  SAVE_INTERVAL: 5000
+  SHUFFLE: True
+  START_STEP: 0
+  TUNE: False
+  VISUALIZE_INTERVAL: 500
+WANDB:
+  ENTITY: tijmenk_
+  LOG_DIR: 
+  NUM_ROW: 0
+  PROJECT_NAME: thesis_pytorch
+  RUN: 16
+wandb: wandb version 0.12.2 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.11.0
+wandb: Syncing run decent-serenity-161
+wandb:  View project at https://wandb.ai/tijmenk_/thesis_pytorch
+wandb:  View run at https://wandb.ai/tijmenk_/thesis_pytorch/runs/ia1iyaj7
+wandb: Run data is saved locally in /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210916_172714-ia1iyaj7
+wandb: Run `wandb offline` to turn off syncing.
+I0916 17:27:21.234670 18422 trainer.py:244] Using 4 GPUs...
+
+I0916 18:05:49.248675 18422 trainer.py:117]  [Step: 500/15000 (3.3333333333333335%)] D Loss: -46.4295768737793 M Loss: 1.2709617614746094 G Loss: -2.1621317863464355 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-yh83vl6x'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-u7ui8wlh'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-vg3v_8a6'
+I0916 18:44:31.073928 18422 trainer.py:117]  [Step: 1000/15000 (6.666666666666667%)] D Loss: -138.49386596679688 M Loss: 1.3858938217163086 G Loss: 0.28843632340431213 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-opix9hfm'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-h2h7hy49'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-p1vx7hvr'
+I0916 19:23:20.666935 18422 trainer.py:117]  [Step: 1500/15000 (10.0%)] D Loss: -228.57449340820312 M Loss: 1.3792588710784912 G Loss: -2.8043596744537354 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-0_qi2mct'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-0cm0583i'
+I0916 20:02:17.388818 18422 trainer.py:117]  [Step: 2000/15000 (13.333333333333334%)] D Loss: -205.893310546875 M Loss: 1.028010368347168 G Loss: -1.21303129196167 
+I0916 20:41:18.245954 18422 trainer.py:117]  [Step: 2500/15000 (16.666666666666668%)] D Loss: -192.9110107421875 M Loss: 1.4020776748657227 G Loss: -2.025432825088501 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-v13_cpb5'
+I0916 21:20:15.750283 18422 trainer.py:117]  [Step: 3000/15000 (20.0%)] D Loss: -178.1737823486328 M Loss: 1.4299123287200928 G Loss: -2.625720977783203 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-hazdafuz'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-27xp20sb'
+I0916 21:59:17.428643 18422 trainer.py:117]  [Step: 3500/15000 (23.333333333333332%)] D Loss: -181.0714111328125 M Loss: 1.2947933673858643 G Loss: -1.5860296487808228 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-tfhq2u19'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-q_w9_f_y'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-p5t08xau'
+I0916 22:38:18.146419 18422 trainer.py:117]  [Step: 4000/15000 (26.666666666666668%)] D Loss: -163.9423065185547 M Loss: 1.3316171169281006 G Loss: -1.8666948080062866 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-rdz5c8md'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-wkebaxhw'
+I0917 00:24:22.800034 18422 trainer.py:117]  [Step: 4500/15000 (30.0%)] D Loss: -104.226318359375 M Loss: 1.0379115343093872 G Loss: -0.8671082258224487 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-bqdpuhg3'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-5mkyqlio'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-kyub2ba9'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-4otwgykp'
+I0917 01:03:19.202061 18422 trainer.py:117]  [Step: 5000/15000 (33.333333333333336%)] D Loss: -107.33741760253906 M Loss: 1.3550472259521484 G Loss: -1.377426028251648 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-zne9fgr9'
+I0917 01:42:18.090192 18422 trainer.py:117]  [Step: 5500/15000 (36.666666666666664%)] D Loss: -100.59612274169922 M Loss: 1.3770686388015747 G Loss: -1.821795105934143 
+I0917 02:21:19.005477 18422 trainer.py:117]  [Step: 6000/15000 (40.0%)] D Loss: -82.80128479003906 M Loss: 1.0451288223266602 G Loss: -1.4121222496032715 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-twk13c6e'
+I0917 03:00:14.717522 18422 trainer.py:117]  [Step: 6500/15000 (43.333333333333336%)] D Loss: -112.3323974609375 M Loss: 1.1803905963897705 G Loss: -2.0979888439178467 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-wfipl76i'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-pvnb6ax4'
+I0917 03:39:16.813735 18422 trainer.py:117]  [Step: 7000/15000 (46.666666666666664%)] D Loss: -46.03255081176758 M Loss: 1.2363018989562988 G Loss: 2.4417877197265625 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-9pqoogq7'
+I0917 04:18:21.310302 18422 trainer.py:117]  [Step: 7500/15000 (50.0%)] D Loss: -4.136209011077881 M Loss: 1.0291081666946411 G Loss: 0.8464422225952148 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-xmv2gm8y'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-4tpe5_2w'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-pm1zmkwm'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-bbz1gtts'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-83e0wzmh'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-t1cmg0tw'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-r28zcl9u'
+I0917 04:57:26.632303 18422 trainer.py:117]  [Step: 8000/15000 (53.333333333333336%)] D Loss: -3.5069308280944824 M Loss: 1.0148978233337402 G Loss: 0.49220043420791626 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-foo1_upl'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-19xzudkk'
+I0917 05:36:35.753985 18422 trainer.py:117]  [Step: 8500/15000 (56.666666666666664%)] D Loss: -13.244318008422852 M Loss: 1.023085355758667 G Loss: 0.4935673475265503 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-ie4u4qos'
+I0917 06:15:43.341471 18422 trainer.py:117]  [Step: 9000/15000 (60.0%)] D Loss: -10.253335952758789 M Loss: 1.0147736072540283 G Loss: 0.30776411294937134 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-rh6cxc58'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-l75khv3n'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-nqykc844'
+I0917 06:54:46.314802 18422 trainer.py:117]  [Step: 9500/15000 (63.333333333333336%)] D Loss: 16.828107833862305 M Loss: 1.0109660625457764 G Loss: 0.3364322781562805 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-7dvczon6'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-f8kr1cls'
+I0917 07:33:58.157009 18422 trainer.py:117]  [Step: 10000/15000 (66.66666666666667%)] D Loss: -1.389182448387146 M Loss: 1.0022982358932495 G Loss: 0.3564186990261078 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-u848csjx'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-h78karry'
+I0917 08:13:02.988999 18422 trainer.py:117]  [Step: 10500/15000 (70.0%)] D Loss: -0.4467411935329437 M Loss: 0.9916243553161621 G Loss: 0.3488076329231262 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-e1w7evjd'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-dua1xi7x'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-ym8_bz5d'
+I0917 08:52:15.192448 18422 trainer.py:117]  [Step: 11000/15000 (73.33333333333333%)] D Loss: -3.13004732131958 M Loss: 0.9878454804420471 G Loss: 0.38313716650009155 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-0c0hluw7'
+I0917 09:31:26.716467 18422 trainer.py:117]  [Step: 11500/15000 (76.66666666666667%)] D Loss: -1.4414935111999512 M Loss: 1.0098602771759033 G Loss: 0.004771307110786438 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-cs8_bnzj'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-5mf60o76'
+I0917 10:10:40.264679 18422 trainer.py:117]  [Step: 12000/15000 (80.0%)] D Loss: -13.590287208557129 M Loss: 1.0047446489334106 G Loss: 0.22408780455589294 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-dfsvcuvr'
+I0917 10:49:49.835030 18422 trainer.py:117]  [Step: 12500/15000 (83.33333333333333%)] D Loss: -3.9923739433288574 M Loss: 1.0090659856796265 G Loss: 0.17149785161018372 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-283de8_h'
+I0917 11:29:00.213470 18422 trainer.py:117]  [Step: 13000/15000 (86.66666666666667%)] D Loss: -0.6140636205673218 M Loss: 1.0033862590789795 G Loss: -0.012487798929214478 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-jocmj7kj'
+I0917 12:08:11.439214 18422 trainer.py:117]  [Step: 13500/15000 (90.0%)] D Loss: -1.8085649013519287 M Loss: 1.0444145202636719 G Loss: -0.090377077460289 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-_n5xcrij'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-ydrwzr_w'
+I0917 12:47:24.041336 18422 trainer.py:117]  [Step: 14000/15000 (93.33333333333333%)] D Loss: -6.032719612121582 M Loss: 1.0066474676132202 G Loss: -0.005926460027694702 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-ezfprgeg'
+I0917 13:26:36.598812 18422 trainer.py:117]  [Step: 14500/15000 (96.66666666666667%)] D Loss: -7.911420822143555 M Loss: 1.0027910470962524 G Loss: -0.07110095024108887 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-b0lt5gnb'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-7xgr6j_n'
+I0917 14:05:50.159885 18422 trainer.py:117]  [Step: 15000/15000 (100.0%)] D Loss: -1.779496669769287 M Loss: 0.9994300007820129 G Loss: 0.1063375174999237 
+wandb: Waiting for W&B process to finish, PID 18451
+wandb: Program ended successfully.
+wandb: - 7.49MB of 7.49MB uploaded (0.00MB deduped)wandb: \ 7.49MB of 7.49MB uploaded (0.00MB deduped)wandb: | 7.49MB of 7.49MB uploaded (0.00MB deduped)wandb: / 7.49MB of 7.55MB uploaded (0.00MB deduped)wandb: - 7.49MB of 7.55MB uploaded (0.00MB deduped)wandb: \ 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: | 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: / 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: - 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: \ 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: | 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: / 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb: - 7.55MB of 7.55MB uploaded (0.00MB deduped)wandb:                                                                                
+wandb: Find user logs for this run at: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210916_172714-ia1iyaj7/logs/debug.log
+wandb: Find internal logs for this run at: /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210916_172714-ia1iyaj7/logs/debug-internal.log
+wandb: Run summary:
+wandb:   real_global_validity -153.16153
+wandb:   fake_global_validity 151.60509
+wandb:    real_patch_validity -86.24155
+wandb:    fake_patch_validity 85.80551
+wandb:              gp_global 0.01537
+wandb:                gp_fake 0.00592
+wandb:          real_validity -239.40308
+wandb:          fake_validity 237.4106
+wandb:                     gp 0.0213
+wandb:                 m_loss 0.99943
+wandb:             recon_loss 0.02303
+wandb:         sem_const_loss 0.17093
+wandb:         tex_const_loss 3.12943
+wandb:        adv_global_loss -152.92795
+wandb:         adv_patch_loss -87.62864
+wandb:               adv_loss -240.55658
+wandb:               _runtime 74316
+wandb:             _timestamp 1631880350
+wandb:                  _step 14999
+wandb: Synced 6 W&B file(s), 180 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: 
+wandb: Synced decent-serenity-161: https://wandb.ai/tijmenk_/thesis_pytorch/runs/ia1iyaj7
+

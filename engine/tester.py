@@ -42,9 +42,9 @@ class Tester:
                           "_{}lr_{}gpu".format(self.opt.MODEL.JOINT.LR, self.opt.SYSTEM.NUM_GPU) + \
                           "_{}run".format(self.opt.WANDB.RUN)
 
-        self.transform = transforms.Compose([transforms.Resize(self.opt.DATASET.SIZE) if self.opt.DATASET.NAME.lower() == "ffhq" else transforms.RandomCrop(self.opt.DATASET.SIZE, pad_if_needed=True, padding_mode="reflect"),
+        self.transform = transforms.Compose([transforms.Resize((self.opt.DATASET.SIZE_H, self.opt.DATASET.SIZE_W)),
                                              # transforms.RandomHorizontalFlip(),
-                                             transforms.CenterCrop(self.opt.DATASET.SIZE),
+                                            #  transforms.CenterCrop(self.opt.DATASET.SIZE),
                                              transforms.ToTensor(),
                                              # transforms.Normalize(self.opt.DATASET.MEAN, self.opt.DATASET.STD)
                                              ])
@@ -131,7 +131,6 @@ class Tester:
 
                 masked_imgs = (cont_imgs * masks.cpu() + imgs.cpu() * (1. - masks.cpu())).cuda()
 
-                
                 pred_masks, neck = self.mpn(masked_imgs)
                 masked_imgs_embraced = masked_imgs * (1. - pred_masks)
                 output = self.rin(masked_imgs_embraced, pred_masks, neck)
@@ -156,90 +155,16 @@ class Tester:
         with open(os.path.join(self.opt.TEST.OUTPUT_DIR, "metrics.json"), "a+") as f:
             json.dump(results, f)
 
-    def infer(self, img_path, cont_path=None, mode=None, color=None, text=None, mask_path=None, gt_path=None, output_dir=None):
-        mode = self.opt.TEST.MODE if mode is None else mode
-        text = self.opt.TEST.TEXT if text is None else text
+    def infer(self, img_path, output_dir=None):
 
         with torch.no_grad():
             im = Image.open(img_path).convert("RGB")
-            im = im.resize((self.opt.DATASET.SIZE, self.opt.DATASET.SIZE))
-            im_t = linear_scaling(transforms.ToTensor()(im).unsqueeze(0).cuda())
+            w_og, h_og = im.size
+            input_im = im.resize((self.opt.DATASET.SIZE_W, self.opt.DATASET.SIZE_H))
+            masked_imgs = linear_scaling(self.tensorize(input_im).unsqueeze(0).cuda())
 
-            if gt_path is not None:
-                gt = Image.open(gt_path).convert("RGB")
-                gt = gt.resize((self.opt.DATASET.SIZE, self.opt.DATASET.SIZE))
-
-            if mask_path is None:
-                masks = torch.from_numpy(self.mask_generator.generate(self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).float().cuda()
-            else:
-                masks = Image.open(mask_path).convert("L")
-                masks = masks.resize((self.opt.DATASET.SIZE, self.opt.DATASET.SIZE))
-                masks = self.tensorize(masks).unsqueeze(0).float().cuda()
-
-            if cont_path is not None:
-                assert mode in [1, 5, 6, 7, 8]
-                c_im = Image.open(cont_path).convert("RGB")
-                c_im = c_im.resize((self.opt.DATASET.SIZE, self.opt.DATASET.SIZE))
-                if mode == 6:
-                    c_im = c_im.resize((self.opt.DATASET.SIZE // 8, self.opt.DATASET.SIZE // 8))
-                    c_im_t = self.tensorize(c_im).unsqueeze(0).cuda()
-                    r_c_im_t = torch.zeros((1, 3, self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).cuda()
-                    masks = torch.zeros((1, 1, self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).cuda()
-                    for i in range(1):
-                        coord_x, coord_y = np.random.randint(self.opt.DATASET.SIZE - self.opt.DATASET.SIZE // 8, size=(2,))
-                        r_c_im_t[:, :, coord_x:coord_x + c_im_t.size(2), coord_y:coord_y + c_im_t.size(3)] = c_im_t
-                        masks[:, :, coord_x:coord_x + c_im_t.size(2), coord_y:coord_y + c_im_t.size(3)] = torch.ones_like(c_im_t[0, 0])
-                    c_im_t = linear_scaling(r_c_im_t)
-                elif mode == 7:
-                    mask = self.to_pil(torch.zeros((self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)))
-                    d = ImageDraw.Draw(c_im)
-                    d_m = ImageDraw.Draw(mask)
-                    font = ImageFont.truetype(self.opt.TEST.FONT, self.opt.TEST.FONT_SIZE)
-                    font_w, font_h = d.textsize(text, font=font)
-                    c_w = (self.opt.DATASET.SIZE - font_w) // 2
-                    c_h = (self.opt.DATASET.SIZE - font_h) // 2
-                    d.text((c_w, c_h), text, font=font, fill=tuple([int(a * 255) for a in COLORS["{}".format(color).upper()]]))
-                    d_m.text((c_w, c_h), text, font=font, fill=255)
-                    masks = self.tensorize(mask).unsqueeze(0).float().cuda()
-                    c_im_t = linear_scaling(self.tensorize(c_im).cuda())
-                elif mode == 8:
-                    center_cropper = transforms.CenterCrop((self.opt.DATASET.SIZE // 2, self.opt.DATASET.SIZE // 2))
-                    crop = self.tensorize(center_cropper(c_im))
-                    coord_x = coord_y = (self.opt.DATASET.SIZE - 128) // 2
-                    r_c_im_t = torch.zeros((1, 3, self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).cuda()
-                    r_c_im_t[:, :, coord_x:coord_x + 128, coord_y:coord_y + 128] = crop
-                    if mask_path is None:
-                        tmp = kornia.resize(masks, self.opt.DATASET.SIZE // 2)
-                        masks = torch.zeros((1, 1, self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).cuda()
-                        masks[:, :, coord_x:coord_x + self.opt.DATASET.SIZE // 2, coord_y:coord_y + self.opt.DATASET.SIZE // 2] = tmp
-                        tmp = kornia.hflip(tmp)
-                        masks[:, :, coord_x:coord_x + self.opt.DATASET.SIZE // 2, coord_y:coord_y + self.opt.DATASET.SIZE // 2] += tmp
-                        # tmp = kornia.vflip(tmp)
-                        # masks[:, :, coord_x:coord_x + self.opt.DATASET.SIZE // 2, coord_y:coord_y + self.opt.DATASET.SIZE // 2] += tmp
-                        masks = torch.clamp(masks, min=0., max=1.)
-                    c_im_t = linear_scaling(r_c_im_t)
-                else:
-                    c_im_t = linear_scaling(transforms.ToTensor()(c_im).unsqueeze(0).cuda())
-            else:
-                assert mode in [2, 3, 4]
-                if mode == 2:
-                    c_im_t = linear_scaling(torch.rand_like(im_t))
-                elif mode == 3:
-                    color = self.opt.TEST.BRUSH_COLOR if color is None else color
-                    brush = torch.tensor(list(COLORS["{}".format(color).upper()])).unsqueeze(0).unsqueeze(-1).unsqueeze(-1).cuda()
-                    c_im_t = linear_scaling(torch.ones_like(im_t) * brush)
-                elif mode == 4:
-                    c_im_t = im_t
-
-            if (mask_path is None or mode == 5) and mode != 8:
-                smooth_masks = self.mask_smoother(1 - masks) + masks
-                smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
-            else:
-                smooth_masks = masks
-
-            masked_imgs = c_im_t * smooth_masks + im_t * (1. - smooth_masks)
             pred_masks, neck = self.mpn(masked_imgs)
-            pred_masks = pred_masks if mode != 8 else torch.clamp(pred_masks * smooth_masks, min=0., max=1.)
+            # pred_masks = pred_masks if mode != 8 else torch.clamp(pred_masks * smooth_masks, min=0., max=1.)
             masked_imgs_embraced = masked_imgs * (1. - pred_masks)
             output = self.rin(masked_imgs_embraced, pred_masks, neck)
             output = torch.clamp(output, max=1., min=0.)
@@ -247,22 +172,22 @@ class Tester:
             if output_dir is not None:
                 # output_dir = os.path.join(output_dir, self.ablation_map[mode])
                 # os.makedirs(output_dir, exist_ok=True)
-                if mode == 8:
-                    self.to_pil(torch.cat([linear_unscaling(im_t).squeeze().cpu(),
-                                           self.tensorize(c_im).squeeze().cpu(),
-                                           linear_unscaling(masked_imgs).squeeze().cpu(),
-                                           output.squeeze().cpu()], dim=2)).save(os.path.join(output_dir, "out{}_{}_{}".format(mode, color, img_path.split("/")[-1])))
-                else:
-                    self.to_pil(torch.cat([linear_unscaling(masked_imgs).squeeze().cpu(),
-                                           output.squeeze().cpu()], dim=1)).save(os.path.join(output_dir, "out{}_{}_{}".format(mode, color, img_path.split("/")[-1])))
+                # prepare input and output image for export
+                im = self.tensorize(im)
+                output = self.to_pil(output.squeeze().cpu())
+                output = self.tensorize(output.resize((w_og, h_og)))
+                stack = torch.cat([im, output], dim=1)
+
+                # stack and export result images
+                stack = self.to_pil(stack)
+                stack.save(
+                    os.path.join(output_dir, "out_{}".format(img_path.split("/")[-1]))
+                )
+
             else:
                 self.to_pil(output.squeeze().cpu()).show()
                 self.to_pil(pred_masks.squeeze().cpu()).show()
                 self.to_pil(linear_unscaling(masked_imgs).squeeze().cpu()).show()
-                self.to_pil(smooth_masks.squeeze().cpu()).show()
-                self.to_pil(linear_unscaling(im_t).squeeze().cpu()).show()
-                if gt_path is not None:
-                    gt.show()
 
     def do_ablation(self, mode=None, img_id=None, c_img_id=None, color=None, output_dir=None):
         mode = self.opt.TEST.MODE if mode is None else mode
@@ -326,57 +251,3 @@ class Tester:
             # self.to_pil(self.unnormalize(masked_imgs).squeeze(0).cpu()).save(os.path.join(output_dir, "input.png"))
             # self.to_pil(output.squeeze(0).cpu()).save(os.path.join(output_dir, "output.png"))
             # self.to_pil(pred_masks.squeeze(0).cpu()).save(os.path.join(output_dir, "output_mask.png"))
-
-    def put_graffiti(self):
-        resizer = transforms.Resize((self.opt.DATASET.SIZE, self.opt.DATASET.SIZE))
-        sample = sample_graffiti(self.opt.TEST.GRAFFITI_PATH)
-        masks = self.tensorize(resizer(Image.fromarray(sample.graffiti_mask))).unsqueeze(0).cuda()
-        graffiti_img = self.tensorize(resizer(Image.fromarray(sample.image))).unsqueeze(0).cuda()
-        c_x = graffiti_img * masks
-        smooth_masks = self.mask_smoother(1 - masks) + masks
-        smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
-        return c_x, smooth_masks
-
-    def paste_facade(self, x, c_img_id):
-        resizer = transforms.Resize((self.opt.DATASET.SIZE // 8))
-        facade, _ = self.cont_image_loader.dataset.__getitem__(c_img_id)
-        facade = linear_scaling(self.tensorize(resizer(self.to_pil(facade))))
-        coord_x, coord_y = np.random.randint(self.opt.DATASET.SIZE - self.opt.DATASET.SIZE // 8, size=(2,))
-        x_scaled = copy.deepcopy(x)
-        x_scaled[:, :, coord_x:coord_x + facade.size(1), coord_y:coord_y + facade.size(2)] = facade
-        masks = torch.zeros((1, 1, self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).cuda()
-        masks[:, :, coord_x:coord_x + facade.size(1), coord_y:coord_y + facade.size(2)] = torch.ones_like(facade[0])
-        smooth_masks = self.mask_smoother(1 - masks) + masks
-        smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
-        return x_scaled, smooth_masks
-
-    def put_text(self, x, color):
-        text = self.opt.TEST.TEXT
-        mask = self.to_pil(torch.zeros_like(x).squeeze(0).cpu())
-        x_scaled = copy.deepcopy(x)
-        x_scaled = self.to_pil(x_scaled.squeeze(0).cpu())
-        d = ImageDraw.Draw(x_scaled)
-        d_m = ImageDraw.Draw(mask)
-        font = ImageFont.truetype(self.opt.TEST.FONT, self.opt.TEST.FONT_SIZE)
-        font_w, font_h = d.textsize(text, font=font)
-        c_w = (self.opt.DATASET.SIZE - font_w) // 2
-        c_h = (self.opt.DATASET.SIZE - font_h) // 2
-        d.text((c_w, c_h), text, font=font, fill=tuple([int(a * 255) for a in COLORS["{}".format(color).upper()]]))
-        d_m.text((c_w, c_h), text, font=font, fill=(255, 255, 255))
-        masks = self.tensorize(mask)[0].unsqueeze(0).unsqueeze(0).cuda()
-        smooth_masks = self.mask_smoother(1 - masks) + masks
-        smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
-        return smooth_masks.repeat(1, 3, 1, 1), smooth_masks
-
-    def swap_faces(self, x, c_img_id):
-        center_cropper = transforms.CenterCrop((self.opt.DATASET.SIZE // 2, self.opt.DATASET.SIZE // 2))
-        c_x, _ = self.cont_image_loader.dataset.__getitem__(c_img_id)
-        crop = linear_scaling(self.tensorize(center_cropper(self.to_pil(linear_unscaling(c_x)))))
-        coord_x = coord_y = (self.opt.DATASET.SIZE - self.opt.DATASET.SIZE // 2) // 2
-        x_scaled = copy.deepcopy(linear_unscaling(x))
-        x_scaled[:, :, coord_x:coord_x + self.opt.DATASET.SIZE // 2, coord_y:coord_y + self.opt.DATASET.SIZE // 2] = crop
-        masks = torch.zeros((1, 1, self.opt.DATASET.SIZE, self.opt.DATASET.SIZE)).cuda()
-        masks[:, :, coord_x:coord_x + self.opt.DATASET.SIZE // 2, coord_y:coord_y + self.opt.DATASET.SIZE // 2] = torch.ones_like(crop[0])
-        smooth_masks = self.mask_smoother(1 - masks) + masks
-        smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
-        return x_scaled, smooth_masks

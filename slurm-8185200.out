@@ -1,0 +1,114 @@
+Looking in links: https://download.pytorch.org/whl/torch_stable.html
+Requirement already satisfied: torch==1.5.0+cu101 in /home/jlpkort/anaconda3/lib/python3.8/site-packages (1.5.0+cu101)
+Requirement already satisfied: torchvision==0.6.0+cu101 in /home/jlpkort/anaconda3/lib/python3.8/site-packages (0.6.0+cu101)
+Requirement already satisfied: numpy in /home/jlpkort/anaconda3/lib/python3.8/site-packages (from torch==1.5.0+cu101) (1.17.4)
+Requirement already satisfied: future in /home/jlpkort/anaconda3/lib/python3.8/site-packages (from torch==1.5.0+cu101) (0.18.2)
+Requirement already satisfied: pillow>=4.1.1 in /home/jlpkort/anaconda3/lib/python3.8/site-packages (from torchvision==0.6.0+cu101) (8.2.0)
+ERROR: Could not find a version that satisfies the requirement opencv_contrib_python_nonfree==4.1.1.1
+ERROR: No matching distribution found for opencv_contrib_python_nonfree==4.1.1.1
+wandb: Currently logged in as: tijmenk_ (use `wandb login --relogin` to force relogin)
+DATASET:
+  MASKS: ./datasets/masks_tv_256
+  NAME: TVB
+  ROOT: ./datasets/data_non_cartoon/data_256_train
+  SIZE_H: 256
+  SIZE_W: 256
+MODEL:
+  D:
+    BETAS: (0.9, 0.99)
+    LR: 1e-05
+    NAME: 1-ChOutputDiscriminator
+    NUM_CHANNELS: 64
+    NUM_CRITICS: 5
+  IS_TRAIN: True
+  JOINT:
+    BETAS: (0.9, 0.99)
+    LR: 0.0002
+    NAME: JointNetwork
+  MPN:
+    BETAS: (0.9, 0.99)
+    LOSS_COEFF: 1.0
+    LR: 1e-05
+    NAME: MaskPredictionNetwork
+    NECK_CHANNELS: 128
+    NUM_CHANNELS: 64
+  NAME: VCNet_NonCartoon
+  RIN:
+    BETAS: (0.9, 0.99)
+    EMBRACE: True
+    LOSS_COEFF: 2.0
+    LR: 1e-06
+    NAME: RobustInpaintingNetwork
+    NECK_CHANNELS: 128
+    NUM_CHANNELS: 32
+OPTIM:
+  ADVERSARIAL: 0.001
+  GP: 10
+  MASK: 1
+  RECON: 1.4
+  SEMANTIC: 0.01
+  TEXTURE: 0.1
+SYSTEM:
+  NUM_GPU: 4
+  NUM_WORKERS: 16
+TEST:
+  ABLATION: False
+  BATCH_SIZE: 64
+  C_IMG_ID: 38
+  IMG_ID: 52
+  ITER: 4
+  MODE: 1
+  OUTPUT_DIR: ./outputs
+  WEIGHTS: ./weights/VCNet_TVB_100000step_4bs_0.0002lr_4gpu_16run/checkpoint-30000.pth
+TRAIN:
+  BATCH_SIZE: 8
+  LOG_INTERVAL: 500
+  NUM_STEPS_FOR_JOINT: 6600
+  NUM_TOTAL_STEP: 15000
+  RESUME: False
+  SAVE_DIR: ./weights
+  SAVE_INTERVAL: 5000
+  SHUFFLE: True
+  START_STEP: 0
+  TUNE: False
+  VISUALIZE_INTERVAL: 500
+WANDB:
+  ENTITY: tijmenk_
+  LOG_DIR: 
+  NUM_ROW: 0
+  PROJECT_NAME: thesis_pytorch
+  RUN: 16
+wandb: wandb version 0.12.2 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.11.0
+wandb: Syncing run stellar-resonance-163
+wandb:  View project at https://wandb.ai/tijmenk_/thesis_pytorch
+wandb:  View run at https://wandb.ai/tijmenk_/thesis_pytorch/runs/3guz6ish
+wandb: Run data is saved locally in /home/jlpkort/vcnet-blind-image-inpainting/wandb/run-20210921_111059-3guz6ish
+wandb: Run `wandb offline` to turn off syncing.
+I0921 11:11:07.473888 23199 trainer.py:244] Using 4 GPUs...
+
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-nwh5vcgq'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-c7xg95th'

@@ -156,7 +156,6 @@ class Discriminator(BaseNetwork):
         batch_size = input_data.size()[0]
         x = self.image_to_features(input_data)
         x = x.view(batch_size, -1)
-
         return self.features_to_prob(x)
 
 

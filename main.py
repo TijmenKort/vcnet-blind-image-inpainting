@@ -1,8 +1,10 @@
+import os
 import glog as log
 import argparse
 from engine.trainer import Trainer
 from engine.tester import Tester
 from utils.config import get_cfg_defaults
+from utils.config_test import get_cfg_test_defaults
 
 parser = argparse.ArgumentParser()
 
@@ -11,7 +13,7 @@ parser.add_argument("--weights", "-w", default=None, help="weights for VCNet")
 parser.add_argument("--dataset", "-d", default="TVB", help="dataset names: FFHQ, TVB")
 parser.add_argument("--dataset_dir", default="./datasets/data_tvb_480", help="dataset directory: './datasets/data_tvb_480'")
 parser.add_argument("--tune", action="store_true", help="true for starting tune for ablation studies")
-parser.add_argument("--test", "-t", action="store_true", help="true for testing phase")
+parser.add_argument("--test", "-t", default="", help="true for testing phase")
 parser.add_argument("--ablation", "-a", action="store_true", help="true for ablation studies")
 parser.add_argument("--test_mode", default=1, help="test mode: 1: contaminant image,"
                                                    "2: random brush strokes with noise,"
@@ -26,6 +28,10 @@ args = parser.parse_args()
 
 if __name__ == '__main__':
     cfg = get_cfg_defaults()
+
+    if args.test == 'test':
+        cfg = get_cfg_test_defaults()
+
     # cfg.merge_from_file(args.base_cfg)
     # cfg.MODEL.IS_TRAIN = not args.test
     # cfg.DATASET.NAME = args.dataset
@@ -49,27 +55,11 @@ if __name__ == '__main__':
                         log.info("I: {}, C: {}, Mode:{}".format(i_id, c_i_id, mode))
         else:
             # qualitative
-            img_path = "datasets/ffhq/images1024x1024/07000/07042.png"
-            img_path_2 = "datasets/ffhq/images1024x1024/02000/02056.png"
-            cont_path = "datasets/CelebAMask-HQ/CelebA-HQ-img/1147.jpg"
-            in_cont_path = "datasets/ImageNet/ILSVRC2012_img_val/ILSVRC2012_val_00000001.JPEG"
-            mask_path = "../../Downloads/mask4.jpg"
-            graf_path = "../../Downloads/graf2.png"
-            graf_mask_path = "../../Downloads/graf-mask-2.jpeg"
-            # tester.infer(img_path, img_path_2, mask_path=mask_path, mode=1, output_dir="../../Downloads")
-            # tester.infer(img_path, in_cont_path, mask_path=mask_path, mode=1, output_dir="../../Downloads")
-            # tester.infer(img_path, mask_path=mask_path, mode=2, output_dir="../../Downloads")
-            # tester.infer(img_path, mode=3, mask_path=mask_path, color="RED", output_dir="../../Downloads")
-            # tester.infer(img_path, mode=3, mask_path=mask_path, color="BLUE", output_dir="../../Downloads")
-            # tester.infer(img_path, mode=3, mask_path=mask_path, color="GREEN", output_dir="../../Downloads")
-            # tester.infer(img_path, mode=3, mask_path=mask_path, color="WHITE", output_dir="../../Downloads")
-            # tester.infer(img_path, mode=3, mask_path=mask_path, color="BLACK", output_dir="../../Downloads")
+            for img_path in os.listdir('datasets/test_data'):
 
-            # tester.infer(img_path, mode=4) # ???
-            # tester.infer(img_path, graf_path, mask_path=graf_mask_path, mode=5)
-            # tester.infer(img_path, cont_path, mode=6)  # problematic
-            # tester.infer(img_path, cont_path, mode=7, text="furkan", color="BLUE")  # problematic
-            # tester.infer(img_path, img_path_2, mask_path=mask_path, mode=8, output_dir="../../Downloads")  # problematic
+                img_path = f"datasets/test_data/{img_path}"
 
+                tester.infer(img_path, output_dir="outputs")
+            
             # quantitative
-            tester.eval()
+            # tester.eval()

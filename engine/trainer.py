@@ -37,7 +37,7 @@ class Trainer:
         )
 
         self.transform = transforms.Compose([
-            transforms.Resize(self.opt.DATASET.SIZE),
+            transforms.Resize((self.opt.DATASET.SIZE_H, self.opt.DATASET.SIZE_W)),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             # transforms.Normalize(self.opt.DATASET.MEAN, self.opt.DATASET.STD)
@@ -193,9 +193,9 @@ class Trainer:
             adv_loss = adv_global_loss + adv_patch_loss
 
             g_loss = self.opt.OPTIM.RECON * recon_loss + \
-                     self.opt.OPTIM.SEMANTIC * sem_const_loss + \
-                     self.opt.OPTIM.TEXTURE * tex_const_loss * \
-                     self.opt.OPTIM.ADVERSARIAL * adv_loss
+                self.opt.OPTIM.SEMANTIC * sem_const_loss + \
+                self.opt.OPTIM.TEXTURE * tex_const_loss * \
+                self.opt.OPTIM.ADVERSARIAL * adv_loss
             g_loss.backward()
             self.optimizer_rin.step()
         else:
@@ -242,10 +242,10 @@ class Trainer:
     def check_and_use_multi_gpu(self):
         if torch.cuda.device_count() > 1 and self.opt.SYSTEM.NUM_GPU > 1:
             log.info("Using {} GPUs...".format(torch.cuda.device_count()))
-            self.mpn = torch.nn.DataParallel(self.mpn).cuda()
-            self.rin = torch.nn.DataParallel(self.rin).cuda()
-            self.discriminator = torch.nn.DataParallel(self.discriminator).cuda()
-            self.patch_discriminator = torch.nn.DataParallel(self.patch_discriminator).cuda()
+            self.mpn = torch.nn.DataParallel(self.mpn, device_ids=[0,1,2,3]).cuda()
+            self.rin = torch.nn.DataParallel(self.rin, device_ids=[0,1,2,3]).cuda()
+            self.discriminator = torch.nn.DataParallel(self.discriminator, device_ids=[0,1,2,3]).cuda()
+            self.patch_discriminator = torch.nn.DataParallel(self.patch_discriminator, device_ids=[0,1,2,3]).cuda()
 
         else:
             log.info("GPU ID: {}".format(torch.cuda.current_device()))
