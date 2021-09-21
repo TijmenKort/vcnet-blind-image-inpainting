@@ -112,3 +112,76 @@ Traceback (most recent call last):
   File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
     os.rmdir(path)
 OSError: [Errno 39] Directory not empty: '/scratch/pymp-c7xg95th'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-14c089pj'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-yyrycmho'
+I0921 12:05:59.322746 23199 trainer.py:117]  [Step: 500/15000 (3.3333333333333335%)] D Loss: -143.12368774414062 M Loss: 1.3225042819976807 G Loss: -3.841829776763916 
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-do0yuezv'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-81w1lhsh'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-qfv6sxkr'
+Traceback (most recent call last):
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/home/jlpkort/anaconda3/lib/python3.8/multiprocessing/util.py", line 133, in _remove_temp_dir
+    rmtree(tempdir)
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 722, in rmtree
+    onerror(os.rmdir, path, sys.exc_info())
+  File "/home/jlpkort/anaconda3/lib/python3.8/shutil.py", line 720, in rmtree
+    os.rmdir(path)
+OSError: [Errno 39] Directory not empty: '/scratch/pymp-t_ha698_'

@@ -107,16 +107,6 @@ class Tester:
                 imgs = linear_scaling(imgs.float().cuda())
                 batch_size, channels, h, w = imgs.size()
 
-                # masks = torch.from_numpy(self.mask_generator.generate(h, w)).repeat([batch_size, 1, 1, 1]).float().cuda()
-                # smooth_masks = self.mask_smoother(1 - masks) + masks
-                # smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
-
-                # cont_imgs, _ = next(iter(self.cont_image_loader))
-                # cont_imgs = linear_scaling(cont_imgs.float().cuda())
-                # if cont_imgs.size(0) != imgs.size(0):
-                #     cont_imgs = cont_imgs[:imgs.size(0)]
-
-                # masked_imgs = cont_imgs * smooth_masks + imgs * (1. - smooth_masks)
                 # load masks from directory
                 masks = self.mask_loader(h, w, self.opt.DATASET.MASKS).repeat([batch_size, 1, 1, 1]).float().cuda()
 
@@ -171,12 +161,24 @@ class Tester:
 
             if output_dir is not None:
                 # output_dir = os.path.join(output_dir, self.ablation_map[mode])
-                # os.makedirs(output_dir, exist_ok=True)
+                os.makedirs(output_dir, exist_ok=True)
+
+                # resize outputs
+                masked_imgs = self.to_pil(linear_unscaling(masked_imgs[0]).cpu()).resize((w_og, h_og))
+                pred_masks = self.to_pil(pred_masks[0].cpu()).resize((w_og, h_og))
+                output = self.to_pil(output.squeeze().cpu()).resize((w_og, h_og))
+                
+                
                 # prepare input and output image for export
                 im = self.tensorize(im)
-                output = self.to_pil(output.squeeze().cpu())
-                output = self.tensorize(output.resize((w_og, h_og)))
-                stack = torch.cat([im, output], dim=1)
+                masked_imgs = self.tensorize(masked_imgs)
+                pred_masks = self.tensorize(pred_masks).expand(3, -1, -1)
+                output = self.tensorize(output)
+
+                # masked_imgs = linear_unscaling(masked_imgs.cpu())
+                # output = self.to_pil(output.squeeze().cpu())
+                # output = self.tensorize(output.resize((w_og, h_og)))
+                stack = torch.cat([im, masked_imgs, pred_masks, output], dim=1)
 
                 # stack and export result images
                 stack = self.to_pil(stack)
@@ -189,65 +191,65 @@ class Tester:
                 self.to_pil(pred_masks.squeeze().cpu()).show()
                 self.to_pil(linear_unscaling(masked_imgs).squeeze().cpu()).show()
 
-    def do_ablation(self, mode=None, img_id=None, c_img_id=None, color=None, output_dir=None):
-        mode = self.opt.TEST.MODE if mode is None else mode
-        assert mode in range(1, 9)
-        img_id = self.opt.TEST.IMG_ID if img_id is None else img_id
-        assert img_id < len(self.image_loader.dataset)
-        c_img_id = self.opt.TEST.C_IMG_ID if c_img_id is None else c_img_id
-        assert c_img_id < len(self.cont_image_loader.dataset)
-        color = self.opt.TEST.BRUSH_COLOR if color is None else color
-        assert str(color).upper() in list(COLORS.keys())
-        output_dir = os.path.join(self.opt.TEST.OUTPUT_DIR, self.ablation_map[mode]) if output_dir is None else output_dir
-        # output_dir = os.path.join(self.opt.TEST.OUTPUT_DIR, str(mode), "{}_{}".format(img_id, c_img_id)) if output_dir is None else output_dir
-        os.makedirs(output_dir, exist_ok=True)
+    # def do_ablation(self, mode=None, img_id=None, c_img_id=None, color=None, output_dir=None):
+    #     mode = self.opt.TEST.MODE if mode is None else mode
+    #     assert mode in range(1, 9)
+    #     img_id = self.opt.TEST.IMG_ID if img_id is None else img_id
+    #     assert img_id < len(self.image_loader.dataset)
+    #     c_img_id = self.opt.TEST.C_IMG_ID if c_img_id is None else c_img_id
+    #     assert c_img_id < len(self.cont_image_loader.dataset)
+    #     color = self.opt.TEST.BRUSH_COLOR if color is None else color
+    #     assert str(color).upper() in list(COLORS.keys())
+    #     output_dir = os.path.join(self.opt.TEST.OUTPUT_DIR, self.ablation_map[mode]) if output_dir is None else output_dir
+    #     # output_dir = os.path.join(self.opt.TEST.OUTPUT_DIR, str(mode), "{}_{}".format(img_id, c_img_id)) if output_dir is None else output_dir
+    #     os.makedirs(output_dir, exist_ok=True)
 
-        x, _ = self.image_loader.dataset.__getitem__(img_id)
-        x = linear_scaling(x.unsqueeze(0).cuda())
-        batch_size, channels, h, w = x.size()
-        with torch.no_grad():
-            masks = torch.cat([torch.from_numpy(self.mask_generator.generate(h, w)) for _ in range(batch_size)], dim=0).float().cuda()
-            smooth_masks = self.mask_smoother(1 - masks) + masks
-            smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
+    #     x, _ = self.image_loader.dataset.__getitem__(img_id)
+    #     x = linear_scaling(x.unsqueeze(0).cuda())
+    #     batch_size, channels, h, w = x.size()
+    #     with torch.no_grad():
+    #         masks = torch.cat([torch.from_numpy(self.mask_generator.generate(h, w)) for _ in range(batch_size)], dim=0).float().cuda()
+    #         smooth_masks = self.mask_smoother(1 - masks) + masks
+    #         smooth_masks = torch.clamp(smooth_masks, min=0., max=1.)
 
-            if mode == 1:  # contaminant image
-                c_x, _ = self.cont_image_loader.dataset.__getitem__(c_img_id)
-                c_x = c_x.unsqueeze(0).cuda()
-            elif mode == 2:  # random brush strokes with noise
-                c_x = torch.rand_like(x)
-            elif mode == 3:  # random brush strokes with different colors
-                brush = torch.tensor(list(COLORS["{}".format(color).upper()])).unsqueeze(0).unsqueeze(-1).unsqueeze(-1).cuda()
-                c_x = torch.ones_like(x) * brush
-            elif mode == 4:  # real occlusions
-                c_x = linear_unscaling(x)
-            elif mode == 5:  # graffiti
-                c_x, smooth_masks = self.put_graffiti()
-            elif mode == 6:  # facades (i.e. resize whole c_img to 64x64, paste to a random location of img)
-                c_x, smooth_masks = self.paste_facade(x, c_img_id)
-                c_x = linear_unscaling(c_x)
-            elif mode == 7:  # words (i.e. write text with particular font size and color)
-                c_x, smooth_masks = self.put_text(x, color)
-            else:  # face swap  (i.e. 64x64 center crop from c_img, paste to the center of img)
-                c_x, smooth_masks = self.swap_faces(x, c_img_id)
+    #         if mode == 1:  # contaminant image
+    #             c_x, _ = self.cont_image_loader.dataset.__getitem__(c_img_id)
+    #             c_x = c_x.unsqueeze(0).cuda()
+    #         elif mode == 2:  # random brush strokes with noise
+    #             c_x = torch.rand_like(x)
+    #         elif mode == 3:  # random brush strokes with different colors
+    #             brush = torch.tensor(list(COLORS["{}".format(color).upper()])).unsqueeze(0).unsqueeze(-1).unsqueeze(-1).cuda()
+    #             c_x = torch.ones_like(x) * brush
+    #         elif mode == 4:  # real occlusions
+    #             c_x = linear_unscaling(x)
+    #         elif mode == 5:  # graffiti
+    #             c_x, smooth_masks = self.put_graffiti()
+    #         elif mode == 6:  # facades (i.e. resize whole c_img to 64x64, paste to a random location of img)
+    #             c_x, smooth_masks = self.paste_facade(x, c_img_id)
+    #             c_x = linear_unscaling(c_x)
+    #         elif mode == 7:  # words (i.e. write text with particular font size and color)
+    #             c_x, smooth_masks = self.put_text(x, color)
+    #         else:  # face swap  (i.e. 64x64 center crop from c_img, paste to the center of img)
+    #             c_x, smooth_masks = self.swap_faces(x, c_img_id)
 
-            c_x = linear_scaling(c_x)
-            masked_imgs = c_x * smooth_masks + x * (1. - smooth_masks)
+    #         c_x = linear_scaling(c_x)
+    #         masked_imgs = c_x * smooth_masks + x * (1. - smooth_masks)
 
-            pred_masks, neck = self.mpn(masked_imgs)
-            masked_imgs_embraced = masked_imgs * (1. - pred_masks) + torch.ones_like(masked_imgs) * pred_masks
-            output = self.rin(masked_imgs_embraced, pred_masks, neck)
+    #         pred_masks, neck = self.mpn(masked_imgs)
+    #         masked_imgs_embraced = masked_imgs * (1. - pred_masks) + torch.ones_like(masked_imgs) * pred_masks
+    #         output = self.rin(masked_imgs_embraced, pred_masks, neck)
 
-            vis_output = torch.cat([linear_unscaling(x).squeeze(0).cpu(),
-                                    linear_unscaling(c_x).squeeze(0).cpu(),
-                                    smooth_masks.squeeze(0).repeat(3, 1, 1).cpu(),
-                                    linear_unscaling(masked_imgs).squeeze(0).cpu(),
-                                    linear_unscaling(masked_imgs_embraced).squeeze(0).cpu(),
-                                    pred_masks.squeeze(0).repeat(3, 1, 1).cpu(),
-                                    torch.clamp(output.squeeze(0), max=1., min=0.).cpu()], dim=-1)
-            self.to_pil(vis_output).save(os.path.join(output_dir, "output_{}_{}.png".format(img_id, c_img_id)))
+    #         vis_output = torch.cat([linear_unscaling(x).squeeze(0).cpu(),
+    #                                 linear_unscaling(c_x).squeeze(0).cpu(),
+    #                                 smooth_masks.squeeze(0).repeat(3, 1, 1).cpu(),
+    #                                 linear_unscaling(masked_imgs).squeeze(0).cpu(),
+    #                                 linear_unscaling(masked_imgs_embraced).squeeze(0).cpu(),
+    #                                 pred_masks.squeeze(0).repeat(3, 1, 1).cpu(),
+    #                                 torch.clamp(output.squeeze(0), max=1., min=0.).cpu()], dim=-1)
+    #         self.to_pil(vis_output).save(os.path.join(output_dir, "output_{}_{}.png".format(img_id, c_img_id)))
 
-            # self.to_pil(self.unnormalize(x).squeeze(0).cpu()).save(os.path.join(output_dir, "img.png"))
-            # self.to_pil(smooth_masks.squeeze(0).cpu()).save(os.path.join(output_dir, "mask.png"))
-            # self.to_pil(self.unnormalize(masked_imgs).squeeze(0).cpu()).save(os.path.join(output_dir, "input.png"))
-            # self.to_pil(output.squeeze(0).cpu()).save(os.path.join(output_dir, "output.png"))
-            # self.to_pil(pred_masks.squeeze(0).cpu()).save(os.path.join(output_dir, "output_mask.png"))
+    #         # self.to_pil(self.unnormalize(x).squeeze(0).cpu()).save(os.path.join(output_dir, "img.png"))
+    #         # self.to_pil(smooth_masks.squeeze(0).cpu()).save(os.path.join(output_dir, "mask.png"))
+    #         # self.to_pil(self.unnormalize(masked_imgs).squeeze(0).cpu()).save(os.path.join(output_dir, "input.png"))
+    #         # self.to_pil(output.squeeze(0).cpu()).save(os.path.join(output_dir, "output.png"))
+    #         # self.to_pil(pred_masks.squeeze(0).cpu()).save(os.path.join(output_dir, "output_mask.png"))
