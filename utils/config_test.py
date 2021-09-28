@@ -86,7 +86,7 @@ _C.DATASET.SIZE_W = 256
 # _C.DATASET.STD = [0.5, 0.5, 0.5]
 
 _C.TEST = CN()
-_C.TEST.OUTPUT_DIR = "./outputs/questionmark"
+_C.TEST.OUTPUT_DIR = "./outputs"
 _C.TEST.ABLATION = False
 _C.TEST.WEIGHTS = "./weights/VCNet_TVB_30000EVEN BETTERstep_4bs_0.0002lr_4gpu_16run/checkpoint-20000.pth"
 _C.TEST.BATCH_SIZE = 64

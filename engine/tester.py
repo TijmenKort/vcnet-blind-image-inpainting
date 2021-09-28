@@ -65,7 +65,7 @@ class Tester:
 
         log.info("Checkpoints loading...")
         self.load_checkpoints(self.opt.TEST.WEIGHTS)
-        self.remove_module_str
+        # self.remove_module_str = remove_module_str
 
         self.mpn = self.mpn.cuda()
         self.rin = self.rin.cuda()
@@ -95,10 +95,11 @@ class Tester:
 
         if fname is None:
             fname = "{}/{}/checkpoint-{}.pth".format(self.opt.TRAIN.SAVE_DIR, self.model_name, self.opt.TRAIN.START_STEP)
-        checkpoints = torch.load(fname)
-        self.mpn.load_state_dict(self.remove_module_str(checkpoints["mpn"]))
-        self.rin.load_state_dict(self.remove_module_str(checkpoints["rin"]))
-        self.discriminator.load_state_dict(self.remove_module_str(checkpoints["D"]))
+        checkpoints_mpn = torch.load(fname)
+        checkpoints_rin = torch.load("./weights/VCNet_weights/VCNet_Places_300000step_4bs_0.0002lr_1gpu_17run.pth")
+        self.mpn.load_state_dict(self.remove_module_str(checkpoints_mpn["mpn"]))
+        self.rin.load_state_dict(checkpoints_rin["rin"])
+        self.discriminator.load_state_dict(checkpoints_rin["D"])
 
     def eval(self):
         psnr_lst, ssim_lst, bce_lst = list(), list(), list()
@@ -165,7 +166,13 @@ class Tester:
 
                 # resize outputs
                 masked_imgs = self.to_pil(linear_unscaling(masked_imgs[0]).cpu()).resize((w_og, h_og))
+                # masked_imgs.save(
+                #     os.path.join(output_dir, "masked_{}.png".format(img_path.split("/")[-1].split(".")[0]))
+                # )
                 pred_masks = self.to_pil(pred_masks[0].cpu()).resize((w_og, h_og))
+                # pred_masks.save(
+                #     os.path.join(output_dir, "mask_{}.png".format(img_path.split("/")[-1].split(".")[0]))
+                # )
                 output = self.to_pil(output.squeeze().cpu()).resize((w_og, h_og))
                 
                 
